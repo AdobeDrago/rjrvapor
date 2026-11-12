@@ -42,3 +42,22 @@ style mismatches are glyph widths (x/width of inline text). Remove the alias fac
 everything left is inline text width/x from glyph metrics. `offsets.js`: 14/14 at the source's page
 position. `npm run lint`: clean. Nav dropdowns (About, Products) open on hover/click and close on
 leave/Escape: built, checked headless, not gated.
+
+## Branch preview gate (https://rjrvapor-home-parity--rjrvapor--adobedrago.aem.page/, DA content)
+
+| Section | 1440 px / mism | 1280 px / mism |
+|---|---|---|
+| header | 98.43% / 6 | 98.89% / 6 |
+| hero | 96.92% / 0 | 97.07% / 0 |
+| disclaimer | 97.68% / 0 | 97.14% / 0 |
+| who | 98.55% / 0 | 98.56% / 0 |
+| principles | 98.13% / 1 | 97.79% / 3 |
+| products | 97.44% / 3 | 98.11% / 5 |
+| footer | 98.94% / 10 | 98.81% / 10 |
+
+0/14 at the bar; offsets 14/14. The +2 mismatches on header and products are image pairing:
+EDS serves the DA images as `media_<hash>.png`, so the gate reports `logo.png` and
+`Vuse_Family_Lineup_v2.png` as unpaired on each side (reported, not hidden). Products at 1280 is
+516px tall against 515px on the source; the served image rendition differs slightly.
+`publish.js` reported "0 served" blocks for home because it checks `/.plain.html`;
+`/index.plain.html` serves hero + 3 × columns image-with-content in authored order.
