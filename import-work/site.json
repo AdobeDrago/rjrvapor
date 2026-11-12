@@ -1,0 +1,30 @@
+{
+ "name": "rjrvapor",
+ "source": { "origin": "https://www.rjrvapor.com" },
+ "rebuild": {
+  "origin": "http://localhost:3010",
+  "preview": "https://{ref}--rjrvapor--adobedrago.aem.page",
+  "repo": "..",
+  "da": { "org": "AdobeDrago", "site": "rjrvapor" }
+ },
+ "access": { "mode": "live", "header": null, "headerEnv": "EPR_ALLOW_HEADER", "origin": null, "profileDir": "work/.browser-profile", "cdpEnv": "CHROME_CDP_URL" },
+ "widths": [1440, 1280],
+ "height": 900,
+ "blockRequests": [],
+ "sectionRoot": {},
+ "hide": [],
+ "invisible": [],
+ "hideByText": [],
+ "freezeCss": [],
+ "hideIframes": true,
+ "consent": true,
+ "video": { "providers": "all" },
+ "carousels": ["slick", "swiper", "hook"],
+ "scroll": { "max": 30000, "step": 500, "wait": 150 },
+ "closeExpanded": "header [aria-expanded=\"true\"]",
+ "variantGuard": null,
+ "prepare": [],
+ "beforeSection": {},
+ "report": {},
+ "gate": { "pixel": 0.99, "tolerance": 0.5, "threshold": 0.1 }
+}

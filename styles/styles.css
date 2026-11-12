@@ -12,16 +12,31 @@
 
 :root {
   /* colors */
-  --background-color: #ffffff;
+  --background-color: #fff;
   --light-color: #ececec;
   --dark-color: #2f4c77;
   --text-color: #1d427a;
   --link-color: #2f4c77;
   --link-hover-color: #2f4c77;
 
-  /* fonts */
-  --body-font-family: franklin-gothic-urw, franklin-gothic-urw-fallback, sans-serif;
-  --heading-font-family: franklin-gothic-urw, franklin-gothic-urw-fallback, sans-serif;
+  /* fonts: exact computed font-family strings of the source (see the alias faces below) */
+  --body-font-family: franklin-gothic-urw, sans-serif;
+  --heading-font-family: franklin-gothic-urw, sans-serif;
+  --comp-font-family: franklin-gothic-urw-comp, sans-serif;
+
+  /* palette measured on the source */
+  --heading-color: rgb(29 66 122);
+  --copy-color: rgb(47 76 119);
+  --accent-color: rgb(194 164 107);
+
+  /* fluid type measured at 1440 and 1280 (linear between the two) */
+  --base-font-size: calc(15.5587px + 0.6261vw);
+  --copy-font-size: calc(16.7287px + 0.3261vw);
+  --h1-font-size: calc(17.4176px + 3.7391vw);
+  --h2-font-size: calc(23.2685px + 0.9566vw);
+  --eyebrow-font-size: calc(15.6261px + 0.6087vw);
+  --section-padding: calc(22.873px + 6.9562vw);
+  --gutter: 4%;
 
   /* body sizes */
   --body-font-size-m: 18px;
@@ -40,11 +55,68 @@
   --nav-height: 51px;
 }
 
-/* fallback fonts */
+/*
+ * franklin-gothic-urw(-comp) is licensed through Adobe Fonts (Typekit) on the source and no kit is
+ * configured for this EDS site. These local faces alias the family names to system fonts so the
+ * computed font-family string matches the source exactly. REMOVE THEM when a kit is added.
+ * size-adjust is calibrated from glyph widths measured on the source; the overrides reproduce its
+ * measured ascent/descent (they scale with size-adjust, hence the divided values).
+ */
 @font-face {
-  font-family: franklin-gothic-urw-fallback;
-  size-adjust: 96.19%;
-  src: local('Arial');
+  font-family: franklin-gothic-urw;
+  font-weight: 100 450;
+  size-adjust: 94.5%;
+  ascent-override: 104.8%;
+  descent-override: 23.3%;
+  line-gap-override: 0%;
+  src: local('Arial'), local('ArialMT');
+}
+
+@font-face {
+  font-family: franklin-gothic-urw;
+  font-weight: 451 550;
+  size-adjust: 95.7%;
+  ascent-override: 103.4%;
+  descent-override: 23.0%;
+  line-gap-override: 0%;
+  src: local('Arial'), local('ArialMT');
+}
+
+@font-face {
+  font-family: franklin-gothic-urw;
+  font-weight: 551 900;
+  size-adjust: 92%;
+  ascent-override: 107.6%;
+  descent-override: 23.9%;
+  line-gap-override: 0%;
+  src: local('Arial Bold'), local('Arial-BoldMT');
+}
+
+@font-face {
+  font-family: franklin-gothic-urw-comp;
+  font-weight: 100 550;
+  size-adjust: 73.9%;
+  ascent-override: 135.3%;
+  descent-override: 33.8%;
+  line-gap-override: 0%;
+  src: local('Arial Narrow'), local('ArialNarrow');
+}
+
+@font-face {
+  font-family: franklin-gothic-urw-comp;
+  font-weight: 551 900;
+  size-adjust: 73.5%;
+  ascent-override: 136.1%;
+  descent-override: 34.0%;
+  line-gap-override: 0%;
+  src: local('Arial Narrow Bold'), local('ArialNarrow-Bold');
+}
+
+/* the source resets borders globally: every element computes border-style solid, width 0 */
+*,
+::before,
+::after {
+  border: 0 solid;
 }
 
 @media (width >= 900px) {
@@ -82,7 +154,7 @@ body.appear {
 }
 
 header {
-  height: var(--nav-height);
+  height: 0;
 }
 
 header .header,
@@ -142,6 +214,7 @@ pre {
 main > div {
   margin: 40px 16px;
 }
+
 
 input,
 textarea,
@@ -319,4 +392,47 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+/* rjrvapor page layout (values measured on the source at 1440 and 1280) */
+@media (width >= 900px) {
+  body {
+    font-size: var(--base-font-size);
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  main > .section {
+    margin: 0;
+  }
+
+  main > .section > div {
+    max-width: none;
+    margin: 0 var(--gutter);
+    padding: 0;
+  }
+
+  main > .section.image-with-content {
+    margin-top: 24px;
+    padding: var(--section-padding) 0;
+  }
+
+  main > .section.grey,
+  main > .section.disclaimer {
+    background-color: var(--light-color);
+  }
+
+  main > .section.disclaimer {
+    padding: var(--section-padding) 0;
+  }
+
+  main > .section.disclaimer p {
+    width: 63.662%;
+    margin: 0 auto;
+    color: var(--heading-color);
+    font-size: var(--copy-font-size);
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+  }
 }
