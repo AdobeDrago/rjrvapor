@@ -11,3 +11,9 @@ helix-importer-ui
 # Ensure these files are tracked
 !CLAUDE.md
 !AGENTS.md
+
+# local previews written by import-work build.py
+/index.html
+/nav.plain.html
+/footer.plain.html
+import-work/work/

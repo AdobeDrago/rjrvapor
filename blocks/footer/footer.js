@@ -14,7 +14,18 @@ export default async function decorate(block) {
   // decorate footer DOM
   block.textContent = '';
   const footer = document.createElement('div');
-  while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
+  const container = document.createElement('div');
+  container.className = 'footer-container';
+  // flatten the fragment's sections into one container: link list, then copyright
+  fragment.querySelectorAll(':scope > div > div, :scope > .section > div').forEach((wrap) => {
+    container.append(...wrap.children);
+  });
+  if (!container.children.length) {
+    while (fragment.firstElementChild) container.append(fragment.firstElementChild);
+  }
+  // DA serves list links as <li><p><a>: unwrap
+  container.querySelectorAll('li > p').forEach((p) => p.replaceWith(...p.childNodes));
+  footer.append(container);
 
   block.append(footer);
 }

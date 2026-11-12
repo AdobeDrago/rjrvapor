@@ -1,0 +1,51 @@
+{
+ "site": "../site.json",
+ "page": "home",
+ "source": "https://www.rjrvapor.com/",
+ "rebuild": "http://localhost:3010/",
+ "widths": [
+  1440,
+  1280
+ ],
+ "out": "work/gate/home",
+ "bundle": "../work/bundles/home",
+ "snapshot": null,
+ "timelines": [],
+ "sections": [
+  {
+   "name": "header",
+   "source": "header.banner",
+   "rebuild": "header .header-banner"
+  },
+  {
+   "name": "hero",
+   "source": "@sec:1",
+   "rebuild": "main > .section:nth-child(1)"
+  },
+  {
+   "name": "disclaimer",
+   "source": "@sec:2",
+   "rebuild": "main > .section:nth-child(2)"
+  },
+  {
+   "name": "who",
+   "source": "@sec:3",
+   "rebuild": "main > .section:nth-child(3)"
+  },
+  {
+   "name": "principles",
+   "source": "@sec:4",
+   "rebuild": "main > .section:nth-child(4)"
+  },
+  {
+   "name": "products",
+   "source": "@sec:5",
+   "rebuild": "main > .section:nth-child(5)"
+  },
+  {
+   "name": "footer",
+   "source": "footer",
+   "rebuild": "footer .footer"
+  }
+ ]
+}

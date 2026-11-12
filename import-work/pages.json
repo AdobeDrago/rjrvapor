@@ -1,0 +1,22 @@
+{
+ "repo": "..",
+ "sections": "pages",
+ "da": {
+  "org": "AdobeDrago",
+  "site": "rjrvapor",
+  "dir": "da"
+ },
+ "template": "home",
+ "pages": {
+  "home": {
+   "path": "index",
+   "source": "https://www.rjrvapor.com/",
+   "gate": "gate/home.json",
+   "bundle": "work/bundles/home"
+  }
+ },
+ "fragments": {
+  "_nav": "nav",
+  "_footer": "footer"
+ }
+}
