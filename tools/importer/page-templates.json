@@ -1,0 +1,206 @@
+{
+  "templates": [
+    {
+      "name": "advocacy",
+      "urls": [
+        "https://www.rjrvapor.com/advocacy/",
+        "https://www.rjrvapor.com/nydisclosures/",
+        "https://www.rjrvapor.com/privacy-policy/",
+        "https://www.rjrvapor.com/suppliers/",
+        "https://www.rjrvapor.com/terms-and-conditions/",
+        "https://www.rjrvapor.com/transforming-tobacco/",
+        "https://www.rjrvapor.com/vapor/",
+        "https://www.rjrvapor.com/who-we-are/",
+        "https://www.rjrvapor.com/wvdisclosures/"
+      ],
+      "representativeUrl": "https://www.rjrvapor.com/advocacy/",
+      "description": "Subpage with a grey hero band (title, optional eyebrow/photo) followed by body copy; some pages add alternating image-with-content rows or bordered data tables.",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [
+            "section.hero.alignfull[has-image]",
+            "section.hero.alignfull[no-image]"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [
+            "section.image-with-content.alignfull > .container > .flex"
+          ]
+        },
+        {
+          "name": "table-bordered",
+          "instances": [
+            "section.general-content.alignfull table"
+          ]
+        }
+      ],
+      "urlPattern": "/*",
+      "sections": [
+        {
+          "id": "hero-image",
+          "name": "Page hero with foreground photo",
+          "selector": [
+            "section.hero.alignfull[has-image]"
+          ],
+          "style": null,
+          "blocks": [
+            "hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "hero-centered",
+          "name": "Page hero, centered title",
+          "selector": [
+            "section.hero.alignfull[no-image]:has(.content[center])"
+          ],
+          "style": "centered",
+          "blocks": [
+            "hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "hero-no-image",
+          "name": "Page hero, no photo",
+          "selector": [
+            "section.hero.alignfull[no-image]:not(:has(.content[center]))"
+          ],
+          "style": null,
+          "blocks": [
+            "hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "image-with-content-grey",
+          "name": "Image with content on grey",
+          "selector": [
+            "section.image-with-content.alignfull[has-bg]"
+          ],
+          "style": "image-with-content, grey",
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "image-with-content",
+          "name": "Image with content",
+          "selector": [
+            "section.image-with-content.alignfull:not([has-bg])"
+          ],
+          "style": "image-with-content",
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "closing-grey",
+          "name": "Closing statement band",
+          "selector": [
+            "section.general-content.alignfull[has-bg]"
+          ],
+          "style": "disclaimer",
+          "blocks": [],
+          "defaultContent": [
+            "section.general-content.alignfull[has-bg] > .container"
+          ]
+        },
+        {
+          "id": "body",
+          "name": "Body copy",
+          "selector": [
+            "section.general-content.alignfull:not([has-bg])"
+          ],
+          "style": null,
+          "blocks": [
+            "table-bordered"
+          ],
+          "defaultContent": [
+            "section.general-content.alignfull:not([has-bg]) > .container"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "contact-us",
+      "urls": [
+        "https://www.rjrvapor.com/contact-us/"
+      ],
+      "representativeUrl": "https://www.rjrvapor.com/contact-us/",
+      "description": "Contact page: grey hero band with title, then a two-column text layout (left/right side contact groups).",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [
+            "section.hero.alignfull[no-image]"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [
+            "section.two-column.alignfull > .container > .flex"
+          ]
+        }
+      ],
+      "urlPattern": "/*",
+      "sections": [
+        {
+          "id": "hero-no-image",
+          "name": "Page hero, no photo",
+          "selector": [
+            "section.hero.alignfull[no-image]"
+          ],
+          "style": null,
+          "blocks": [
+            "hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "two-column",
+          "name": "Contact groups in two columns",
+          "selector": [
+            "section.two-column.alignfull"
+          ],
+          "style": null,
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": []
+        }
+      ]
+    },
+    {
+      "name": "news-article",
+      "urls": [
+        "https://www.rjrvapor.com/fda-issues-mdo-for-vuse-vibe-tank-menthol-3-0-and-vuse-ciro-cartridge-menthol-1-5/"
+      ],
+      "representativeUrl": "https://www.rjrvapor.com/fda-issues-mdo-for-vuse-vibe-tank-menthol-3-0-and-vuse-ciro-cartridge-menthol-1-5/",
+      "description": "News/press article: single white body section with an H2 title, date paragraph and article copy. No hero.",
+      "blocks": [],
+      "urlPattern": "/*",
+      "sections": [
+        {
+          "id": "article-body",
+          "name": "Article body",
+          "selector": [
+            "section.general-content.alignfull"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "section.general-content.alignfull > .container"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "projectType": "da"
+  }
+}

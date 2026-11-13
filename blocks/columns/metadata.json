@@ -1,0 +1,54 @@
+{
+  "variantName": "columns",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "Alternating image and text rows (image-with-content)",
+    "layout": "image-with-content: ~620px image beside heading + accented body; 'left' puts the image left, 'right' puts it right; stacked on mobile with the image first",
+    "background": "Grey band on alternate rows comes from section style 'grey'"
+  },
+  "contentPattern": {
+    "structure": "one row; cells in visual order. image-with-content left = [picture | H2 + paragraphs], right = [H2 + paragraphs | picture]; without an image a single [H2 + paragraphs] cell",
+    "rows": [
+      {
+        "row": 1,
+        "cells": [
+          "Picture or H2 + paragraphs",
+          "H2 + paragraphs or picture"
+        ]
+      }
+    ],
+    "sectionStyles": [
+      {
+        "style": "image-with-content",
+        "effect": "Section spacing"
+      },
+      {
+        "style": "image-with-content, grey",
+        "effect": "Section spacing plus grey band"
+      }
+    ]
+  },
+  "options": [
+    {
+      "class": "image-with-content",
+      "label": "Image with content"
+    },
+    {
+      "class": "left",
+      "label": "Image left"
+    },
+    {
+      "class": "right",
+      "label": "Image right"
+    }
+  ],
+  "memberVariantIds": [
+    "image-with-content"
+  ],
+  "usage": [
+    "https://www.rjrvapor.com/",
+    "https://www.rjrvapor.com/transforming-tobacco/"
+  ],
+  "reuseGuidance": "Author as 'Columns (image-with-content, left)' or 'Columns (image-with-content, right)'; put cells in visual order. Pair with section-metadata Style 'image-with-content' (add ', grey' for the grey band)."
+}
