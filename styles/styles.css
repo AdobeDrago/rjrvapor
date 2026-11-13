@@ -383,7 +383,7 @@ main .section.highlight {
  * subpage content sections: body copy, tables, contact columns
  * (values measured on the source at 390, 1280 and 1440)
  */
-main > .section:not(.hero-container, .disclaimer, .image-with-content) {
+main > .section:not(.hero-container, .disclaimer, .image-with-content):has(> div) {
   margin: 24px 0 0;
   padding: var(--section-padding) 0;
 }
