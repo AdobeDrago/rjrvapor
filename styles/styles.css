@@ -1,3 +1,5 @@
+@import url('brand.css');
+
 /*
  * Copyright 2020 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -9,51 +11,6 @@
  * OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-
-:root {
-  /* colors */
-  --background-color: #fff;
-  --light-color: #ececec;
-  --dark-color: #2f4c77;
-  --text-color: #1d427a;
-  --link-color: #2f4c77;
-  --link-hover-color: #2f4c77;
-
-  /* fonts: exact computed font-family strings of the source (see the alias faces below) */
-  --body-font-family: franklin-gothic-urw, sans-serif;
-  --heading-font-family: franklin-gothic-urw, sans-serif;
-  --comp-font-family: franklin-gothic-urw-comp, sans-serif;
-
-  /* palette measured on the source */
-  --heading-color: rgb(29 66 122);
-  --copy-color: rgb(47 76 119);
-  --accent-color: rgb(194 164 107);
-
-  /* fluid type measured at 1440 and 1280 (linear between the two) */
-  --base-font-size: calc(15.5587px + 0.6261vw);
-  --copy-font-size: calc(16.7287px + 0.3261vw);
-  --h1-font-size: calc(17.4176px + 3.7391vw);
-  --h2-font-size: calc(23.2685px + 0.9566vw);
-  --eyebrow-font-size: calc(15.6261px + 0.6087vw);
-  --section-padding: calc(22.873px + 6.9562vw);
-  --gutter: 4%;
-
-  /* body sizes */
-  --body-font-size-m: 18px;
-  --body-font-size-s: 18px;
-  --body-font-size-xs: 17px;
-
-  /* heading sizes */
-  --heading-font-size-xxl: 32px;
-  --heading-font-size-xl: 27px;
-  --heading-font-size-l: 27px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
-
-  /* nav height */
-  --nav-height: 51px;
-}
 
 /*
  * franklin-gothic-urw(-comp) is licensed through Adobe Fonts (Typekit) on the source and no kit is
@@ -117,26 +74,6 @@
 ::before,
 ::after {
   border: 0 solid;
-}
-
-@media (width >= 900px) {
-  :root {
-    /* body sizes */
-    --body-font-size-m: 24.57px;
-    --body-font-size-s: 21.42px;
-    --body-font-size-xs: 21.42px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 71.26px;
-    --heading-font-size-xl: 37.04px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
-
-    /* nav height */
-    --nav-height: 69px;
-  }
 }
 
 body {
@@ -214,7 +151,6 @@ pre {
 main > div {
   margin: 40px 16px;
 }
-
 
 input,
 textarea,
@@ -434,5 +370,127 @@ main .section.highlight {
     font-weight: 400;
     line-height: 1.5;
     text-align: center;
+  }
+
+  /* a disclaimer band after other sections (transforming tobacco closing band) */
+  main > .section:not(.hero-container) + .section.disclaimer {
+    margin-top: 24px;
+  }
+
+}
+
+/*
+ * subpage content sections: body copy, tables, contact columns
+ * (values measured on the source at 390, 1280 and 1440)
+ */
+main > .section:not(.hero-container, .disclaimer, .image-with-content) {
+  margin: 24px 0 0;
+  padding: var(--section-padding) 0;
+}
+
+/* subpage hero sits 24px above the next section (source), also on mobile */
+main > .section.hero-container:has(.hero.subpage) {
+  margin-bottom: 0;
+}
+
+/* disclaimer band on mobile (source at 390: grey, 50px padding, centered 18px copy) */
+@media (width < 900px) {
+  main > .section.disclaimer {
+    margin: 0;
+    padding: var(--section-padding) 0;
+    background-color: var(--light-color);
+  }
+
+  main > .section:not(.hero-container) + .section.disclaimer {
+    margin-top: 24px;
+  }
+
+  main > .section.disclaimer p {
+    margin: 0;
+    color: var(--heading-color);
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+  }
+}
+
+/* no hero (news article): clear the overlaid navigation */
+main > .section:first-child:not(.hero-container) {
+  margin-top: 0;
+  padding-top: 99px;
+}
+
+/* the hero photo overflows into the next section on desktop only */
+main > .section.hero-container:has(.hero-has-media) + .section {
+  padding-top: 0;
+}
+
+/* blocks and default content inside a content section flow with one rhythm */
+main > .section:not(.hero-container, .disclaimer, .image-with-content) > div + div {
+  margin-top: 1.125em;
+}
+
+main > .section:not(.disclaimer) .default-content-wrapper {
+  line-height: 1.5;
+}
+
+main > .section:not(.disclaimer) .default-content-wrapper > * {
+  margin: 0;
+}
+
+main > .section:not(.disclaimer) .default-content-wrapper > * + * {
+  margin-top: 1.125em;
+}
+
+main > .section:not(.disclaimer) .default-content-wrapper h2 {
+  color: var(--heading-color);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+main > .section:not(.disclaimer) .default-content-wrapper :is(p, li) {
+  color: var(--heading-color);
+  font-weight: 400;
+}
+
+main > .section:not(.disclaimer) .default-content-wrapper a:any-link {
+  color: var(--link-color);
+  font-weight: 700;
+}
+
+main > .section:not(.disclaimer) .default-content-wrapper strong {
+  font-weight: 700;
+}
+
+/* the source types its bullets as text; the importer moves them into the list marker */
+main > .section:not(.disclaimer) .default-content-wrapper ul {
+  padding: 0;
+  list-style: none;
+}
+
+main > .section:not(.disclaimer) .default-content-wrapper ul > li::before {
+  content: '•\00a0';
+}
+
+main > .section:not(.disclaimer) .default-content-wrapper ol {
+  padding: 0;
+  list-style-position: inside;
+}
+
+main > .section.centered .default-content-wrapper {
+  text-align: center;
+}
+
+@media (width >= 900px) {
+  main > .section:first-child:not(.hero-container) {
+    padding-top: 85px;
+  }
+
+  main > .section.hero-container:has(.hero-has-media) + .section {
+    padding-top: 200px;
+  }
+
+  main > .section:not(.disclaimer) .default-content-wrapper h2 {
+    font-size: var(--h2-font-size);
   }
 }

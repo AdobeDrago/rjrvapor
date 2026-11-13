@@ -1,0 +1,45 @@
+{
+  "variantName": "table-bordered",
+  "baseBlock": "table",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "Data tables for ingredient and constituent disclosures",
+    "layout": "Full width, every cell bordered, no zebra stripes, bold header row; scrolls horizontally on narrow viewports"
+  },
+  "contentPattern": {
+    "structure": "each block row is a table row and each cell a table cell; the first row is the header unless 'no-header' is set",
+    "rows": [
+      {
+        "row": 1,
+        "cells": [
+          "Header label",
+          "Header label",
+          "..."
+        ]
+      },
+      {
+        "row": "2..n",
+        "cells": [
+          "Data",
+          "Data",
+          "..."
+        ]
+      }
+    ]
+  },
+  "options": [
+    {
+      "class": "no-header",
+      "label": "No header row"
+    }
+  ],
+  "memberVariantIds": [
+    "table-bordered"
+  ],
+  "usage": [
+    "https://www.rjrvapor.com/nydisclosures/",
+    "https://www.rjrvapor.com/wvdisclosures/",
+    "https://www.rjrvapor.com/privacy-policy/"
+  ],
+  "reuseGuidance": "Use for any tabular data. Keep the 'Table x-y' caption as a bold paragraph before the block. Use 'no-header' when the first row is data (e.g. bold labels in the first column only)."
+}

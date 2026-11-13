@@ -1,0 +1,66 @@
+{
+  "variantName": "hero",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "Page-top banner with decorative background, eyebrow and title; optional foreground photo",
+    "background": "Light grey band with the decorative swoosh as a CSS background",
+    "typography": "Optional eyebrow with accent dash, H1; subpage heroes may add a description paragraph and a down-arrow link CTA",
+    "alignment": "Left by default; centered when the section has style 'centered'",
+    "layout": "With a foreground photo: title left, photo right at 900px and up (the photo overflows the 534px grey band); photo above the title on mobile"
+  },
+  "contentPattern": {
+    "structure": "row 1 = background picture; row 2 = optional eyebrow paragraph, H1, optional description paragraph(s), optional paragraph containing only a link (CTA), optional foreground picture (same cell or a second cell)",
+    "rows": [
+      {
+        "row": 1,
+        "cells": [
+          "Background picture"
+        ]
+      },
+      {
+        "row": 2,
+        "cells": [
+          "Eyebrow <p> (optional), H1, description <p> (optional), <p><a> CTA (optional), foreground <picture> (optional)"
+        ]
+      }
+    ],
+    "sectionStyles": [
+      {
+        "style": "centered",
+        "effect": "Centers the eyebrow, title and description"
+      }
+    ],
+    "example": "<div class=\"hero subpage\"><div><div><picture>bg</picture></div></div><div><div><h1>Advocacy</h1><p><picture>advocacy.jpg</picture></p></div></div></div>"
+  },
+  "options": [
+    {
+      "name": "subpage",
+      "effect": "Banner sized to its content (subpages); without it the banner keeps the home page's 535px height"
+    },
+    {
+      "name": "wide",
+      "effect": "With subpage: the title area spans the full width instead of 550px"
+    }
+  ],
+  "memberVariantIds": [
+    "hero",
+    "hero-no-image",
+    "hero-centered",
+    "hero-split-image"
+  ],
+  "usage": [
+    "https://www.rjrvapor.com/",
+    "https://www.rjrvapor.com/advocacy/",
+    "https://www.rjrvapor.com/suppliers/",
+    "https://www.rjrvapor.com/vapor/",
+    "https://www.rjrvapor.com/who-we-are/",
+    "https://www.rjrvapor.com/transforming-tobacco/",
+    "https://www.rjrvapor.com/nydisclosures/",
+    "https://www.rjrvapor.com/wvdisclosures/",
+    "https://www.rjrvapor.com/privacy-policy/",
+    "https://www.rjrvapor.com/terms-and-conditions/",
+    "https://www.rjrvapor.com/contact-us/"
+  ],
+  "reuseGuidance": "One hero for all pages. A foreground photo in the content cell switches to the split layout automatically (no separate block). Subpages add option 'subpage' ('wide' for full-width titles). Centered titles use section-metadata Style 'centered', not a new variant."
+}

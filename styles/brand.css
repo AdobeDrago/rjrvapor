@@ -1,0 +1,68 @@
+/*
+ * rjrvapor.com design tokens (measured on the source at 1440 and 1280 for the home page build;
+ * reused unchanged for all migrated pages).
+ */
+:root {
+  /* colors */
+  --background-color: #fff;
+  --light-color: #ececec;
+  --dark-color: #2f4c77;
+  --text-color: #1d427a;
+  --link-color: #2f4c77;
+  --link-hover-color: #2f4c77;
+
+  /* fonts: exact computed font-family strings of the source (see the alias faces below) */
+  --body-font-family: franklin-gothic-urw, sans-serif;
+  --heading-font-family: franklin-gothic-urw, sans-serif;
+  --comp-font-family: franklin-gothic-urw-comp, sans-serif;
+
+  /* palette measured on the source */
+  --heading-color: rgb(29 66 122);
+  --copy-color: rgb(47 76 119);
+  --accent-color: rgb(194 164 107);
+
+  /* fluid type measured at 1440 and 1280 (linear between the two) */
+  --base-font-size: calc(15.5587px + 0.6261vw);
+  --copy-font-size: calc(16.7287px + 0.3261vw);
+  --h1-font-size: calc(17.4176px + 3.7391vw);
+  --h2-font-size: calc(23.2685px + 0.9566vw);
+  --eyebrow-font-size: calc(15.6261px + 0.6087vw);
+  --section-padding: calc(22.873px + 6.9562vw);
+  --gutter: 4%;
+
+  /* body sizes */
+  --body-font-size-m: 18px;
+  --body-font-size-s: 18px;
+  --body-font-size-xs: 17px;
+
+  /* heading sizes */
+  --heading-font-size-xxl: 32px;
+  --heading-font-size-xl: 27px;
+  --heading-font-size-l: 27px;
+  --heading-font-size-m: 27px;
+  --heading-font-size-s: 24px;
+  --heading-font-size-xs: 22px;
+
+  /* nav height */
+  --nav-height: 51px;
+}
+
+@media (width >= 900px) {
+  :root {
+    /* body sizes */
+    --body-font-size-m: 24.57px;
+    --body-font-size-s: 21.42px;
+    --body-font-size-xs: 21.42px;
+
+    /* heading sizes */
+    --heading-font-size-xxl: 71.26px;
+    --heading-font-size-xl: 37.04px;
+    --heading-font-size-l: 28px;
+    --heading-font-size-m: 22px;
+    --heading-font-size-s: 20px;
+    --heading-font-size-xs: 18px;
+
+    /* nav height */
+    --nav-height: 69px;
+  }
+}
