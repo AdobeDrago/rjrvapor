@@ -9,3 +9,5 @@ sync-block-collection.sh
 import-work/
 catalog/
 tools/
+
+docs/*

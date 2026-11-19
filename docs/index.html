@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>R.J. Reynolds Vapor — rjrvapor.com → EDS handover</title>
+<meta name="description" content="Home, About, Products, Advocacy, Suppliers, Contact, legal and state-disclosure pages (12 content pages plus nav and footer) built on EDS, with the Franklin Gothic type residual documented.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    /* Viasat brand (mirrors styles/styles.css and block CSS) */
+    --accent: #2a5db0;
+    --accent-hover: #204b90;
+    --accent-text: #1f4e99; /* AA-compliant on light bg */
+    --accent-on-dark: #9bbcf5;
+    --ink: #1b2433;
+    --ink-alt: #1b2433;
+    --accent-pale: #e8f0fc;
+    
+
+    --gray-50: #ffffff;
+    --gray-75: #fafbfc;
+    --gray-100: #f2f5f8;
+    --gray-200: #e6eaee;
+    --gray-300: #dde2e7;
+    --gray-400: #c4ccd3;
+    --gray-500: #a9b3bc;
+    --gray-600: #5f6b75;
+    --gray-700: #66727c;
+    --gray-800: #465967;
+    --gray-900: #202e39;
+
+    --font: 'Source Sans 3', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --mono: 'Source Code Pro', 'Fira Mono', 'Courier New', monospace;
+    --sidebar-width: 248px;
+    --content-max: 940px;
+    --header-h: 56px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--gray-900);
+    background: var(--gray-50);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  a { color: var(--accent-text); }
+
+  /* ── TOP NAV ── */
+  .topnav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--header-h);
+    background: var(--ink-alt);
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    gap: 16px;
+    z-index: 100;
+  }
+  .topnav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+  }
+  .topnav-logo .mark {
+    width: 30px; height: 30px;
+    border-radius: 6px;
+    background: var(--accent-on-dark);
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .topnav-divider { width: 1px; height: 20px; background: #3c4c58; }
+  .topnav-title {
+    color: #d3dae0;
+    font-size: 14px;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .topnav-badge {
+    margin-left: auto;
+    background: var(--accent-on-dark);
+    color: var(--ink);
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  /* ── LAYOUT ── */
+  .layout { display: flex; margin-top: var(--header-h); min-height: calc(100vh - var(--header-h)); }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    position: sticky;
+    top: var(--header-h);
+    height: calc(100vh - var(--header-h));
+    overflow-y: auto;
+    border-right: 1px solid var(--gray-200);
+    background: var(--gray-75);
+    padding: 24px 0 40px;
+  }
+  .sidebar-section { margin-bottom: 8px; }
+  .sidebar-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gray-600);
+    padding: 8px 20px 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 20px;
+    font-size: 13px;
+    color: var(--gray-800);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: background 0.1s, color 0.1s, border-color 0.1s;
+  }
+  .sidebar-link:hover { background: var(--gray-200); color: var(--gray-900); }
+  .sidebar-link.active {
+    background: var(--accent-pale);
+    color: var(--accent-text);
+    border-left-color: var(--accent);
+    font-weight: 700;
+  }
+  .sidebar-link .icon { width: 16px; height: 16px; opacity: 0.6; flex-shrink: 0; }
+  .sidebar-link.active .icon { opacity: 1; }
+
+  /* ── MAIN ── */
+  .main { flex: 1; min-width: 0; padding: 48px 56px 80px; }
+  .main-inner { max-width: var(--content-max); }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--gray-200);
+    margin-bottom: 48px;
+    scroll-margin-top: calc(var(--header-h) + 48px);
+  }
+  .page-hero-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-text);
+    margin-bottom: 8px;
+  }
+  .page-hero h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  .page-hero-sub { font-size: 16px; color: var(--gray-700); max-width: 640px; line-height: 1.5; }
+
+  /* ── SECTIONS ── */
+  .doc-section { margin-bottom: 56px; scroll-margin-top: calc(var(--header-h) + 24px); }
+  .doc-section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+  .section-rule { height: 1px; background: var(--gray-200); margin: 12px 0 24px; }
+  .doc-section h3 { font-size: 14px; font-weight: 700; color: var(--gray-900); margin: 24px 0 8px; }
+  .doc-section p { font-size: 14px; color: var(--gray-800); margin-bottom: 12px; line-height: 1.65; }
+
+  /* ── SECTION ICON BADGE ── */
+  .section-icon {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .icon-purple { background: var(--accent-pale); color: var(--accent); }
+  .icon-ink    { background: #eceef0; color: var(--ink); }
+  .icon-green  { background: #eaf6f1; color: #268e6c; }
+  .icon-seafoam{ background: #e6f4f4; color: #16878c; }
+  .icon-orange { background: #fff4e5; color: #da7b11; }
+  .icon-blue   { background: #e9f1fc; color: #0d51b5; }
+
+  /* ── URL CARDS ── */
+  .url-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .url-card {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .url-card:hover { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+  .url-card-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--gray-600);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .url-card-label .dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .dot-purple { background: var(--accent); }
+  .dot-ink    { background: var(--ink); }
+  .dot-green  { background: #268e6c; }
+  .dot-orange { background: #da7b11; }
+  .url-card-title { font-size: 13px; font-weight: 700; color: var(--gray-900); }
+  .url-card-url { font-size: 12px; font-family: var(--mono); color: var(--accent-text); word-break: break-all; }
+  .url-card-desc { font-size: 12px; color: var(--gray-600); margin-top: 2px; }
+
+  /* ── CODE BLOCKS ── */
+  .code-block {
+    background: var(--ink);
+    color: #d4d4d4;
+    border-radius: 6px;
+    padding: 14px 16px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.6;
+    overflow-x: auto;
+    margin: 8px 0 4px;
+    white-space: pre;
+  }
+  .code-block .cmt  { color: #7fb77e; }
+  .code-inline {
+    font-family: var(--mono);
+    font-size: 12px;
+    background: var(--gray-100);
+    border: 1px solid var(--gray-300);
+    color: var(--gray-900);
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+
+  /* ── NOTICES ── */
+  .notice {
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 16px 0;
+    font-size: 13px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    line-height: 1.5;
+  }
+  .notice-icon { flex-shrink: 0; margin-top: 1px; }
+  .notice a { color: inherit; }
+  .notice.info     { background: var(--accent-pale); color: #17396f; border-left: 3px solid var(--accent); }
+  .notice.tip      { background: #eaf6f1; color: #1a6b50; border-left: 3px solid #268e6c; }
+  .notice.warning  { background: #fff4e5; color: #8a4b08; border-left: 3px solid #da7b11; }
+
+  /* ── BLOCKS GRID ── */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+  .skill-card { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; padding: 14px 16px; }
+  .skill-card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+  .skill-tag {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 7px;
+    border-radius: 10px;
+  }
+  .tag-js  { background: #fff8d6; color: #8a5e00; }
+  .tag-core{ background: var(--gray-100); color: var(--gray-700); }
+  .tag-poli{ background: var(--accent-pale); color: var(--accent-text); }
+  .skill-card-name { font-size: 13px; font-weight: 700; color: var(--gray-900); font-family: var(--mono); }
+  .skill-card-desc { font-size: 12px; color: var(--gray-600); line-height: 1.5; }
+
+  /* ── PIPELINE DIAGRAM ── */
+  .arch-diagram { border: 1px solid var(--gray-200); border-radius: 8px; padding: 24px; background: var(--gray-75); margin: 16px 0; }
+  .arch-row { display: flex; gap: 8px; align-items: center; justify-content: center; flex-wrap: wrap; }
+  .arch-node { padding: 8px 16px; border-radius: 6px; font-size: 12px; font-weight: 700; text-align: center; min-width: 110px; }
+  .arch-arrow { font-size: 18px; color: var(--gray-400); }
+  .node-a { background: var(--accent-pale); color: var(--accent-text); }
+  .node-b { background: #eceef0; color: var(--ink); }
+  .node-c { background: #eaf6f1; color: #1a6b50; }
+  .node-d { background: #fff4e5; color: #8a4b08; }
+
+  /* ── TABLE ── */
+  .table-scroll { overflow-x: auto; }
+  .spec-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+  .spec-table th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--gray-600);
+    padding: 8px 12px;
+    border-bottom: 2px solid var(--gray-200);
+    background: var(--gray-75);
+  }
+  .spec-table td { padding: 9px 12px; border-bottom: 1px solid var(--gray-200); color: var(--gray-800); vertical-align: top; }
+  .spec-table tr:last-child td { border-bottom: none; }
+  .spec-table td:first-child { font-weight: 700; color: var(--gray-900); }
+  .spec-table td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* ── STAT ROW ── */
+  .stat-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 16px 0; }
+  .stat-card { border: 1px solid var(--gray-200); border-radius: 8px; padding: 16px; background: var(--gray-75); }
+  .stat-num { font-size: 26px; font-weight: 700; color: var(--accent); line-height: 1.1; }
+  .stat-label { font-size: 12px; color: var(--gray-600); margin-top: 4px; }
+
+  /* ── SWATCHES ── */
+  .swatch-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 12px 0; }
+  .swatch { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; font-size: 12px; }
+  .swatch-chip { height: 44px; }
+  .swatch-meta { padding: 8px 10px; }
+  .swatch-meta strong { display: block; color: var(--gray-900); }
+  .swatch-meta code { font-family: var(--mono); color: var(--gray-600); }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    border-top: 1px solid var(--gray-200);
+    margin-top: 40px;
+    padding-top: 20px;
+    font-size: 12px;
+    color: var(--gray-600);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .doc-footer a { text-decoration: none; }
+
+  /* ── STATUS PILLS ── */
+  .nav-status {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 1px 6px;
+    border-radius: 8px;
+    text-transform: uppercase;
+  }
+  .ns-progress { background: #fff4e5; color: #8a4b08; }
+  .ns-done     { background: #eaf6f1; color: #1a6b50; }
+
+  .status-badge {
+    margin-left: auto;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 3px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
+  }
+  .sb-progress { background: #fff4e5; color: #8a4b08; }
+  .sb-done     { background: #eaf6f1; color: #1a6b50; }
+
+  /* ── CHECKLIST ── */
+  .checklist { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 4px 0; }
+  .check-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 14px;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    background: var(--gray-50);
+  }
+  .check-mark {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .cm-done    { background: #eaf6f1; color: #268e6c; }
+  .cm-done::before { content: '✓'; }
+  .cm-partial { background: #fff4e5; color: #da7b11; }
+  .cm-partial::before { content: '–'; }
+  .cm-todo    { background: var(--gray-100); color: var(--gray-500); }
+  .cm-todo::before { content: '○'; }
+  .check-body { flex: 1; }
+  .check-title { font-weight: 700; font-size: 13px; color: var(--gray-900); }
+  .check-note  { font-size: 12px; color: var(--gray-600); line-height: 1.5; }
+
+  .req-list { margin: 8px 0 0 18px; font-size: 13px; color: var(--gray-700); }
+  .req-list li { margin-bottom: 4px; }
+
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .main { padding: 24px 16px 60px; }
+    .page-hero h1 { font-size: 24px; }
+    .url-grid { grid-template-columns: 1fr; }
+    .topnav-title { display: none; }
+  }
+
+/* ── ADDITIONS FOR PORTFOLIO / SITE PAGES ── */
+.topnav select { margin-left: auto; background: #2a3550; color: #fff; border: 1px solid #3c4c70; border-radius: 6px; padding: 5px 8px; font: inherit; font-size: 13px; max-width: 240px; }
+.topnav-badge { margin-left: 12px; }
+.sidebar-back { display: block; padding: 6px 20px 14px; font-size: 12px; font-weight: 700; text-decoration: none; }
+.pill { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 10px; text-transform: uppercase; white-space: nowrap; }
+.pill.done { background: #eaf6f1; color: #1a6b50; }
+.pill.warn { background: #fff4e5; color: #8a4b08; }
+.pill.todo { background: var(--gray-100); color: var(--gray-700); }
+.pill.info { background: var(--accent-pale); color: var(--accent-text); }
+.spec-table td.mono, .mono { font-family: var(--mono); font-size: 12px; }
+.spec-table td a { word-break: break-word; }
+.spec-table tr.sub td { background: var(--gray-75); }
+.muted { color: var(--gray-600); }
+.small { font-size: 12px; }
+details.fold { border: 1px solid var(--gray-200); border-radius: 8px; margin: 12px 0; background: var(--gray-50); }
+details.fold > summary { cursor: pointer; padding: 10px 14px; font-weight: 700; font-size: 13px; color: var(--gray-900); }
+details.fold > .fold-body { padding: 0 14px 12px; }
+.da-table { border-collapse: collapse; margin: 10px 0; font-size: 12px; width: 100%; max-width: 640px; background: #fff; }
+.da-table th { background: #f4ecf8; color: #4a2c5e; text-align: left; padding: 6px 10px; border: 1px solid #d9cce3; font-weight: 700; font-family: var(--mono); }
+.da-table td { border: 1px solid #d9cce3; padding: 6px 10px; color: var(--gray-800); vertical-align: top; }
+.da-table td.empty { color: var(--gray-500); font-style: italic; }
+.block-card { border: 1px solid var(--gray-200); border-radius: 8px; padding: 16px 18px; margin: 14px 0; background: var(--gray-50); }
+.block-card h3 { margin-top: 0; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.block-card h3 code { font-family: var(--mono); }
+.kv { display: grid; grid-template-columns: 150px 1fr; gap: 4px 12px; font-size: 13px; margin: 8px 0; }
+.kv dt { color: var(--gray-600); font-weight: 700; }
+.kv dd { color: var(--gray-900); min-width: 0; word-break: break-word; }
+.tree { font-family: var(--mono); font-size: 12.5px; line-height: 1.7; background: var(--gray-75); border: 1px solid var(--gray-200); border-radius: 8px; padding: 14px 16px; overflow-x: auto; white-space: pre; color: var(--gray-800); }
+.timeline { list-style: none; border-left: 2px solid var(--gray-200); margin: 8px 0 8px 6px; padding-left: 18px; }
+.timeline li { margin-bottom: 10px; font-size: 13px; position: relative; }
+.timeline li::before { content: ''; position: absolute; left: -25px; top: 6px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.timeline .when { color: var(--gray-600); font-size: 12px; font-family: var(--mono); margin-right: 6px; }
+.matrix td, .matrix th { text-align: center; padding: 7px 8px; }
+.matrix td:first-child, .matrix th:first-child { text-align: left; }
+.matrix .yes { color: #1a6b50; font-weight: 700; }
+.matrix .cust { color: var(--accent-text); font-weight: 700; }
+.matrix .no { color: var(--gray-400); }
+.site-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 14px; margin: 14px 0; }
+.site-card { border: 1px solid var(--gray-200); border-radius: 10px; padding: 16px 18px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 6px; background: #fff; transition: border-color .15s, box-shadow .15s; }
+.site-card:hover { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.site-card h3 { margin: 0; font-size: 16px; color: var(--ink); }
+.site-card .dom { font-family: var(--mono); font-size: 12px; color: var(--accent-text); }
+.site-card .meta { font-size: 12px; color: var(--gray-700); display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+.site-card p { font-size: 13px; color: var(--gray-800); margin: 4px 0 0; line-height: 1.5; }
+.swatch-chip.bordered { border-bottom: 1px solid var(--gray-200); }
+.type-sample { border: 1px solid var(--gray-200); border-radius: 8px; padding: 10px 14px; margin: 6px 0; font-size: 13px; }
+.type-sample b { font-family: var(--mono); font-size: 12px; color: var(--gray-700); }
+.hl-list { margin: 6px 0 12px 18px; font-size: 14px; color: var(--gray-800); line-height: 1.6; }
+.hl-list li { margin-bottom: 4px; }
+.table-scroll { max-width: 100%; }
+@media (max-width: 768px) { .topnav select { max-width: 150px; } .kv { grid-template-columns: 1fr; } .topnav-badge { display: none; } }
+
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <a class="topnav-logo" href="#overview"><span class="mark">R</span>Reynolds EDS</a>
+  <div class="topnav-divider"></div>
+  <span class="topnav-title">rjrvapor.com → EDS · Site handover</span>
+  <span class="topnav-badge" style="margin-left:auto">Handover</span>
+</nav>
+<div class="layout">
+<nav class="sidebar" aria-label="Page navigation">
+<div class="sidebar-section"><div class="sidebar-label">Overview</div>
+<a class="sidebar-link active" href="#overview"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2h5v5H2zm7 0h5v5H9zM2 9h5v5H2zm7 0h5v5H9z"/></svg>Overview</a>
+<a class="sidebar-link" href="#use-case"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.75A.75.75 0 012.75 2h7.5l3.5 3.5v7.75a.75.75 0 01-.75.75h-10.5a.75.75 0 01-.75-.75zM3.5 3.5v9h9V6H9.5V3.5z"/></svg>Use case &amp; requirements</a>
+<a class="sidebar-link" href="#references"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95z"/></svg>Key references</a>
+<a class="sidebar-link" href="#deliverables"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.5 2A2.5 2.5 0 002 4.5v7A2.5 2.5 0 004.5 14h7a2.5 2.5 0 002.5-2.5v-7A2.5 2.5 0 0011.5 2zM3.5 4.5a1 1 0 011-1h7a1 1 0 011 1v7a1 1 0 01-1 1h-7a1 1 0 01-1-1z"/></svg>Deliverables</a>
+</div>
+<div class="sidebar-section"><div class="sidebar-label">DA.live content</div>
+<a class="sidebar-link" href="#pages"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.75A.75.75 0 012.75 2h7.5l3.5 3.5v7.75a.75.75 0 01-.75.75h-10.5a.75.75 0 01-.75-.75zM3.5 3.5v9h9V6H9.5V3.5z"/></svg>Pages in DA.live</a>
+<a class="sidebar-link" href="#navigation"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8.22 2.97a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06l2.97-2.97H3.75a.75.75 0 010-1.5h7.44L8.22 4.03a.75.75 0 010-1.06z"/></svg>Navigation &amp; links</a>
+<a class="sidebar-link" href="#header"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25z"/></svg>Header &amp; footer</a>
+<a class="sidebar-link" href="#blocks"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.5 2A2.5 2.5 0 002 4.5v7A2.5 2.5 0 004.5 14h7a2.5 2.5 0 002.5-2.5v-7A2.5 2.5 0 0011.5 2zM3.5 4.5a1 1 0 011-1h7a1 1 0 011 1v7a1 1 0 01-1 1h-7a1 1 0 01-1-1z"/></svg>Content blocks</a>
+<a class="sidebar-link" href="#brand"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M3 2.5A.5.5 0 013.5 2h9a.5.5 0 01.5.5V4a.5.5 0 01-1 0v-1H8.5v10H10a.5.5 0 010 1H6a.5.5 0 010-1h1.5V3h-3v1a.5.5 0 01-1 0z"/></svg>Brand design system</a>
+</div>
+<div class="sidebar-section"><div class="sidebar-label">GitHub</div>
+<a class="sidebar-link" href="#github"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M9.5 3.25a2.25 2.25 0 11-3 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 1111 3.25z"/></svg>GitHub implementation</a>
+</div>
+<div class="sidebar-section"><div class="sidebar-label">Quality</div>
+<a class="sidebar-link" href="#fidelity"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg>Parity gate &amp; results</a>
+</div>
+<div class="sidebar-section"><div class="sidebar-label">Handoff</div>
+<a class="sidebar-link" href="#decisions"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.75A.75.75 0 012.75 2h7.5l3.5 3.5v7.75a.75.75 0 01-.75.75h-10.5a.75.75 0 01-.75-.75zM3.5 3.5v9h9V6H9.5V3.5z"/></svg>Decisions &amp; assumptions</a>
+<a class="sidebar-link" href="#limitations"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575z"/></svg>Known limitations</a>
+<a class="sidebar-link" href="#next-steps"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8.22 2.97a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06l2.97-2.97H3.75a.75.75 0 010-1.5h7.44L8.22 4.03a.75.75 0 010-1.06z"/></svg>Next steps</a>
+</div>
+<div class="sidebar-section"><div class="sidebar-label">Reference</div>
+<a class="sidebar-link" href="#dev-notes"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.5 2A2.5 2.5 0 002 4.5v7A2.5 2.5 0 004.5 14h7a2.5 2.5 0 002.5-2.5v-7A2.5 2.5 0 0011.5 2zM3.5 4.5a1 1 0 011-1h7a1 1 0 011 1v7a1 1 0 01-1 1h-7a1 1 0 01-1-1z"/></svg>Developer notes</a>
+</div>
+</nav>
+<main class="main"><div class="main-inner">
+<div class="page-hero" id="overview">
+<div class="page-hero-eyebrow">Site handover · rjrvapor.com</div>
+<h1>R.J. Reynolds Vapor on Edge Delivery Services</h1>
+<p class="page-hero-sub">Home, About, Products, Advocacy, Suppliers, Contact, legal and state-disclosure pages (12 content pages plus nav and footer) built on EDS, with the Franklin Gothic type residual documented.</p>
+<p style="margin-top:14px"><span class="pill warn">Migrated · pending QA</span> <span class="muted small">&nbsp;Tracker status: Migrated - pending QA</span></p>
+<div class="stat-row"><div class="stat-card"><div class="stat-num">12</div><div class="stat-label">DA pages (excl. nav/footer)</div></div><div class="stat-card"><div class="stat-num">8</div><div class="stat-label">Blocks in repo</div></div><div class="stat-card"><div class="stat-num">5</div><div class="stat-label">Blocks changed or added</div></div><div class="stat-card"><div class="stat-num">8</div><div class="stat-label">Block variants authored</div></div><div class="stat-card"><div class="stat-num">2/2</div><div class="stat-label">PRs merged / total</div></div><div class="stat-card"><div class="stat-num">9</div><div class="stat-label">Commits on main</div></div></div>
+</div><section class="doc-section" id="use-case">
+<h2><span class="section-icon icon-purple"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.75A.75.75 0 012.75 2h7.5l3.5 3.5v7.75a.75.75 0 01-.75.75h-10.5a.75.75 0 01-.75-.75zM3.5 3.5v9h9V6H9.5V3.5z"/></svg></span>Use case &amp; requirements</h2>
+<div class="section-rule"></div>
+<div class="table-scroll"><table class="spec-table"><thead><tr><th>Area</th><th>What is built</th></tr></thead><tbody><tr><td>Scope</td><td>Home plus 11 inner pages in DA: who-we-are, vapor, advocacy, suppliers, contact-us, transforming-tobacco, privacy-policy, terms-and-conditions, nydisclosures, wvdisclosures and an FDA MDO notice.</td></tr><tr><td>Visual language</td><td>Franklin Gothic (URW) from Adobe Fonts on the source, aliased to local Arial faces here; navy text (#1d427a), gold accent (rgb 194 164 107).</td></tr><tr><td>Navigation</td><td>Header with About and Products dropdowns (hover/click, close on leave/Escape).</td></tr><tr><td>Content types</td><td>Image-with-content columns (left/right), subpage heroes, long bordered disclosure tables.</td></tr></tbody></table></div><h3>What stands out in this build</h3><ul class="hl-list"><li>hero variants hero-has-media, subpage and wide; columns variant image-with-content (left/right/2-col).</li><li>table-bordered block with a no-header option; nydisclosures and wvdisclosures pages hold dozens of table blocks each.</li><li>Disclaimer implemented as a section style.</li><li>PR #1 home parity and PR #2 subpages are both merged.</li></ul>
+</section><section class="doc-section" id="references">
+<h2><span class="section-icon icon-blue"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95z"/></svg></span>Key references</h2>
+<div class="section-rule"></div>
+<div class="url-grid"><a class="url-card" href="https://main--rjrvapor--adobedrago.aem.page/" target="_blank" rel="noopener">
+<span class="url-card-label"><span class="dot dot-purple"></span>Preview</span>
+<span class="url-card-title">main preview (.aem.page)</span>
+<span class="url-card-url">https://main--rjrvapor--adobedrago.aem.page/</span>
+<span class="url-card-desc">Branch main, content previewed from DA</span>
+</a><a class="url-card" href="https://main--rjrvapor--adobedrago.aem.live/" target="_blank" rel="noopener">
+<span class="url-card-label"><span class="dot dot-green"></span>Live</span>
+<span class="url-card-title">main live (.aem.live)</span>
+<span class="url-card-url">https://main--rjrvapor--adobedrago.aem.live/</span>
+<span class="url-card-desc">Published content only</span>
+</a><a class="url-card" href="https://da.live/#/adobedrago/rjrvapor" target="_blank" rel="noopener">
+<span class="url-card-label"><span class="dot dot-ink"></span>Authoring</span>
+<span class="url-card-title">Document Authoring (DA.live)</span>
+<span class="url-card-url">https://da.live/#/adobedrago/rjrvapor</span>
+<span class="url-card-desc">Org adobedrago, site rjrvapor</span>
+</a><a class="url-card" href="https://github.com/AdobeDrago/rjrvapor" target="_blank" rel="noopener">
+<span class="url-card-label"><span class="dot dot-ink"></span>Code</span>
+<span class="url-card-title">GitHub · AdobeDrago/rjrvapor</span>
+<span class="url-card-url">https://github.com/AdobeDrago/rjrvapor</span>
+<span class="url-card-desc">Code, blocks, styles, import-work ledger</span>
+</a><a class="url-card" href="https://rjrvapor.com/" target="_blank" rel="noopener">
+<span class="url-card-label"><span class="dot dot-orange"></span>Production</span>
+<span class="url-card-title">rjrvapor.com</span>
+<span class="url-card-url">https://rjrvapor.com/</span>
+<span class="url-card-desc">Source site that is being migrated</span>
+</a></div><p class="small muted">HTTP status observed when this page was generated: preview <strong>200</strong>, preview /nav <strong>200</strong>, preview /footer <strong>200</strong>, live <strong>404</strong>, live /nav <strong>404</strong>.</p>
+</section><section class="doc-section" id="deliverables">
+<h2><span class="section-icon icon-seafoam"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.5 2A2.5 2.5 0 002 4.5v7A2.5 2.5 0 004.5 14h7a2.5 2.5 0 002.5-2.5v-7A2.5 2.5 0 0011.5 2zM3.5 4.5a1 1 0 011-1h7a1 1 0 011 1v7a1 1 0 01-1 1h-7a1 1 0 01-1-1z"/></svg></span>Deliverables</h2>
+<div class="section-rule"></div>
+<ul class="checklist"><li class="check-item"><span class="check-mark cm-done"></span><div class="check-body"><div class="check-title">Repository from aem-boilerplate</div><div class="check-note">AdobeDrago/rjrvapor with 9 commits on main; branches: main, rjrvapor-home-parity, rjrvapor-subpages.</div></div></li><li class="check-item"><span class="check-mark cm-done"></span><div class="check-body"><div class="check-title">Brand setup applied</div><div class="check-note">Fonts, logo, favicon, head.html and styles.css tokens committed.</div></div></li><li class="check-item"><span class="check-mark cm-done"></span><div class="check-body"><div class="check-title">Header and footer fragments in DA</div><div class="check-note">/nav and /footer exist in DA.</div></div></li><li class="check-item"><span class="check-mark cm-done"></span><div class="check-body"><div class="check-title">Home page authored in DA</div><div class="check-note">index.html: 6 sections, 4 content block(s), 2 image(s).</div></div></li><li class="check-item"><span class="check-mark cm-done"></span><div class="check-body"><div class="check-title">Inner pages in DA</div><div class="check-note">11 pages beyond home authored.</div></div></li><li class="check-item"><span class="check-mark cm-done"></span><div class="check-body"><div class="check-title">Site-specific block code</div><div class="check-note">5 blocks added or changed vs. the boilerplate.</div></div></li><li class="check-item"><span class="check-mark cm-done"></span><div class="check-body"><div class="check-title">Pull requests merged</div><div class="check-note">2 of 2 merged.</div></div></li><li class="check-item"><span class="check-mark cm-done"></span><div class="check-body"><div class="check-title">Parity ledger committed</div><div class="check-note">import-work/ledger.md is in the repo.</div></div></li><li class="check-item"><span class="check-mark cm-todo"></span><div class="check-body"><div class="check-title">Published to .aem.live</div><div class="check-note">Live returns 404: content is previewed but not yet published.</div></div></li><li class="check-item"><span class="check-mark cm-partial"></span><div class="check-body"><div class="check-title">QA sign-off</div><div class="check-note">Tracker status: Migrated - pending QA.</div></div></li></ul>
+</section><section class="doc-section" id="pages">
+<h2><span class="section-icon icon-purple"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.75A.75.75 0 012.75 2h7.5l3.5 3.5v7.75a.75.75 0 01-.75.75h-10.5a.75.75 0 01-.75-.75zM3.5 3.5v9h9V6H9.5V3.5z"/></svg></span>Pages in DA.live</h2>
+<div class="section-rule"></div>
+<p>DA.live holds <strong>12</strong> content documents plus the <code class="code-inline">/nav</code> and <code class="code-inline">/footer</code> fragments, read via the DA admin list and source APIs. Block names in the table are the class strings of the authored tables.</p><div class="table-scroll"><table class="spec-table"><thead><tr><th>Path (preview link)</th><th>Heading</th><th>Blocks authored</th><th>Sections</th><th>Images</th><th>Modified</th></tr></thead><tbody><tr><td><a href="https://main--rjrvapor--adobedrago.aem.page/" target="_blank" rel="noopener">/</a></td><td>We are more than a vapor company, we are an innovation company.</td><td>hero, columns image-with-content left ×2, columns image-with-content right</td><td>6</td><td>2</td><td>2026-11-13</td></tr><tr><td><a href="https://main--rjrvapor--adobedrago.aem.page/advocacy" target="_blank" rel="noopener">/advocacy</a></td><td>Advocacy</td><td>hero subpage</td><td>3</td><td>2</td><td>2026-11-13</td></tr><tr><td><a href="https://main--rjrvapor--adobedrago.aem.page/contact-us" target="_blank" rel="noopener">/contact-us</a></td><td>Contact Us</td><td>hero subpage, columns</td><td>3</td><td>1</td><td>2026-11-13</td></tr><tr><td><a href="https://main--rjrvapor--adobedrago.aem.page/fda-issues-mdo-for-vuse-vibe-tank-menthol-3-0-and-vuse-ciro-cartridge-menthol-1-5" target="_blank" rel="noopener">/fda-issues-mdo-for-vuse-vibe-tank-menthol-3-0-and-vuse-ciro-cartridge-menthol-1-5</a></td><td>FDA Issues MDO for Vuse Vibe Tank Menthol 3.0% and Vuse Ciro Cartridge</td><td><span class="muted">default content</span></td><td>2</td><td>0</td><td>2026-11-13</td></tr><tr><td><a href="https://main--rjrvapor--adobedrago.aem.page/nydisclosures" target="_blank" rel="noopener">/nydisclosures</a></td><td>Ingredient Disclosures for Vapor Products and E-Cigarettes</td><td>hero subpage, table-bordered ×33</td><td>3</td><td>1</td><td>2026-11-13</td></tr><tr><td><a href="https://main--rjrvapor--adobedrago.aem.page/privacy-policy" target="_blank" rel="noopener">/privacy-policy</a></td><td>Privacy Policy and Your State Privacy Rights</td><td>hero subpage wide, table-bordered no-header, table-bordered</td><td>3</td><td>1</td><td>2026-11-13</td></tr><tr><td><a href="https://main--rjrvapor--adobedrago.aem.page/suppliers" target="_blank" rel="noopener">/suppliers</a></td><td>Suppliers</td><td>hero subpage</td><td>3</td><td>2</td><td>2026-11-13</td></tr><tr><td><a href="https://main--rjrvapor--adobedrago.aem.page/terms-and-conditions" target="_blank" rel="noopener">/terms-and-conditions</a></td><td>Terms &amp; Conditions</td><td>hero subpage wide</td><td>3</td><td>1</td><td>2026-11-13</td></tr><tr><td><a href="https://main--rjrvapor--adobedrago.aem.page/transforming-tobacco" target="_blank" rel="noopener">/transforming-tobacco</a></td><td>RJRVC is working to create A Better Tomorrow™ by Building a Smokeless </td><td>hero subpage wide, columns image-with-content left ×3, columns image-with-content right ×2</td><td>8</td><td>4</td><td>2026-11-13</td></tr><tr><td><a href="https://main--rjrvapor--adobedrago.aem.page/vapor" target="_blank" rel="noopener">/vapor</a></td><td>VAPOR</td><td>hero subpage</td><td>3</td><td>3</td><td>2026-11-13</td></tr><tr><td><a href="https://main--rjrvapor--adobedrago.aem.page/who-we-are" target="_blank" rel="noopener">/who-we-are</a></td><td>Who We Are</td><td>hero subpage</td><td>3</td><td>1</td><td>2026-11-13</td></tr><tr><td><a href="https://main--rjrvapor--adobedrago.aem.page/wvdisclosures" target="_blank" rel="noopener">/wvdisclosures</a></td><td>Ingredient Disclosures for Vapor Products</td><td>hero subpage, table-bordered ×22</td><td>3</td><td>1</td><td>2026-11-13</td></tr></tbody></table></div><h3>DA content tree</h3><div class="tree">da.live/#/adobedrago/rjrvapor
+├── advocacy.html
+├── contact-us.html
+├── fda-issues-mdo-for-vuse-vibe-tank-menthol-3-0-and-vuse-ciro-cartridge-menthol-1-5.html
+├── footer.html
+├── index.html
+├── nav.html
+├── nydisclosures.html
+├── privacy-policy.html
+├── suppliers.html
+├── terms-and-conditions.html
+├── transforming-tobacco.html
+├── vapor.html
+├── who-we-are.html
+├── wvdisclosures.html
+└── media/   (9 files)
+    ├── (root)  [9]</div>
+</section><section class="doc-section" id="navigation">
+<h2><span class="section-icon icon-blue"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8.22 2.97a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06l2.97-2.97H3.75a.75.75 0 010-1.5h7.44L8.22 4.03a.75.75 0 010-1.06z"/></svg></span>Navigation &amp; links</h2>
+<div class="section-rule"></div>
+<p>Links were read from the authored <code class="code-inline">/nav</code> and <code class="code-inline">/footer</code> documents in DA. An internal link counts as <em>built</em> when a matching document exists in DA; otherwise it still points at a path that has not been migrated.</p><div class="table-scroll"><table class="spec-table"><thead><tr><th>Fragment</th><th>Links</th><th>Built in DA</th><th>Not yet migrated</th><th>External</th></tr></thead><tbody><tr><td>/nav</td><td class="num">4</td><td class="num">4</td><td class="num">0</td><td class="num">0</td></tr><tr><td>/footer</td><td class="num">7</td><td class="num">7</td><td class="num">0</td><td class="num">0</td></tr></tbody></table></div><details class="fold"><summary>Link labels authored in /nav (4)</summary><div class="fold-body small">Who We Are · Vapor · A Better Tomorrow</div></details>
+</section><section class="doc-section" id="header">
+<h2><span class="section-icon icon-ink"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25zm1.75-.25a.25.25 0 00-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25v-8.5a.25.25 0 00-.25-.25z"/></svg></span>Header &amp; footer</h2>
+<div class="section-rule"></div>
+<dl class="kv"><dt>Header block</dt><dd><a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/header/header.js" target="_blank" rel="noopener">blocks/header/header.js</a> (3.2 KB) and <a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/header/header.css" target="_blank" rel="noopener">header.css</a> (1.6 KB)</dd><dt>Content source</dt><dd>DA document <code class="code-inline">/nav</code> loaded as a fragment (present).</dd><dt>Footer block</dt><dd><a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/footer/footer.js" target="_blank" rel="noopener">blocks/footer/footer.js</a> (1.2 KB) and <a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/footer/footer.css" target="_blank" rel="noopener">footer.css</a> (939 B)</dd><dt>Content source</dt><dd>DA document <code class="code-inline">/footer</code> (present).</dd></dl><p class="small muted">/nav: 2 sections, 4 links, 1 images. /footer: 1 sections, 7 links.</p><div class="notice info"><span class="notice-icon">ℹ</span><div>Both fragments are authored in DA as plain sections (no block tables). Section order inside the document drives the header and footer layout, so edit them in DA and re-preview <code class="code-inline">/nav</code> and <code class="code-inline">/footer</code> after any change.</div></div>
+</section><section class="doc-section" id="blocks">
+<h2><span class="section-icon icon-orange"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.5 2A2.5 2.5 0 002 4.5v7A2.5 2.5 0 004.5 14h7a2.5 2.5 0 002.5-2.5v-7A2.5 2.5 0 0011.5 2zM3.5 4.5a1 1 0 011-1h7a1 1 0 011 1v7a1 1 0 01-1 1h-7a1 1 0 01-1-1z"/></svg></span>Content blocks (DA authoring reference)</h2>
+<div class="section-rule"></div>
+<p>These are the <strong>content blocks authored in DA.live</strong> for this site. Each card shows the table an author builds in DA (first row = block name and variants, following rows = cells) taken from a live document, and where the implementation lives in GitHub.</p><p>Section styles used through a <code class="code-inline">section-metadata</code> block (<em>Style</em> row): <code class="code-inline">centered</code>, <code class="code-inline">disclaimer</code>, <code class="code-inline">grey</code>, <code class="code-inline">image-with-content</code>.</p><div class="block-card">
+<h3><code>table-bordered</code> <span class="skill-tag tag-js">Custom / modified</span></h3>
+<p>Table (bordered): each block row is a table row, each cell a table cell. The first row is the header row unless the `no-header` option is set. Based on https://www.aem.live/developer/block-collection/table</p>
+<table class="da-table"><tr><th colspan="4">table-bordered</th></tr><tr><td>Aerosol: Vuse Solo Original</td><td>CAS#</td><td>Category 10 NYCRR 1006.1(c)</td><td>Chemical of Concern as Defined by 10 NYCRR 1006.1(h)**</td></tr><tr><td>Acetaldehyde</td><td>75-07-0</td><td>Byproduct</td><td>Yes</td></tr><tr><td>Acetic Acid</td><td>64-19-7</td><td>Byproduct</td><td>Yes</td></tr><tr><td>Acetone</td><td>67-64-1</td><td>Contaminant</td><td>Yes</td></tr><tr><td>Acetyl Propionyl</td><td>600-14-6</td><td>Byproduct</td><td>Yes</td></tr><tr><td>Acrolein</td><td>107-02-8</td><td>Byproduct</td><td>Yes</td></tr><tr><td colspan="4" class="empty">… 11 more rows</td></tr></table>
+<dl class="kv">
+<dt>Authored on</dt><dd>56 block instances across 3 pages: <code class="code-inline">/nydisclosures</code>, <code class="code-inline">/privacy-policy</code>, <code class="code-inline">/wvdisclosures</code></dd>
+<dt>Implementation</dt><dd><a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/table-bordered/table-bordered.js" target="_blank" rel="noopener">blocks/table-bordered/table-bordered.js</a> (1.7 KB) · <a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/table-bordered/table-bordered.css" target="_blank" rel="noopener">table-bordered.css</a> (787 B)</dd>
+<dt>CSS variants</dt><dd><span class="muted">none declared</span></dd>
+</dl>
+</div><div class="block-card">
+<h3><code>hero subpage</code> <span class="skill-tag tag-js">Custom / modified</span></h3>
+<p>Is this paragraph a lone link (an authored call to action)?</p>
+<table class="da-table"><tr><th colspan="1">hero subpage</th></tr><tr><td class="empty">(image / empty)</td></tr><tr><td>Advocacy</td></tr></table>
+<dl class="kv">
+<dt>Authored on</dt><dd>7 block instances across 7 pages: <code class="code-inline">/advocacy</code>, <code class="code-inline">/contact-us</code>, <code class="code-inline">/nydisclosures</code>, <code class="code-inline">/suppliers</code>, <code class="code-inline">/vapor</code>, <code class="code-inline">/who-we-are</code> +1 more</dd>
+<dt>Implementation</dt><dd><a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/hero/hero.js" target="_blank" rel="noopener">blocks/hero/hero.js</a> (2.6 KB) · <a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/hero/hero.css" target="_blank" rel="noopener">hero.css</a> (4.1 KB)</dd>
+<dt>CSS variants</dt><dd><code class="code-inline">hero-has-media</code>, <code class="code-inline">subpage</code></dd>
+</dl>
+</div><div class="block-card">
+<h3><code>columns image-with-content left</code> <span class="skill-tag tag-js">Custom / modified</span></h3>
+
+<table class="da-table"><tr><th colspan="1">columns image-with-content left</th></tr><tr><td>Who we are RJRVC combines tobacco expertise with innovative technology</td></tr></table>
+<dl class="kv">
+<dt>Authored on</dt><dd>5 block instances across 2 pages: <code class="code-inline">/</code>, <code class="code-inline">/transforming-tobacco</code></dd>
+<dt>Implementation</dt><dd><a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/columns/columns.js" target="_blank" rel="noopener">blocks/columns/columns.js</a> (1.2 KB) · <a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/columns/columns.css" target="_blank" rel="noopener">columns.css</a> (2.9 KB)</dd>
+<dt>CSS variants</dt><dd><code class="code-inline">image-with-content</code></dd>
+</dl>
+</div><div class="block-card">
+<h3><code>columns image-with-content right</code> <span class="skill-tag tag-js">Custom / modified</span></h3>
+
+<table class="da-table"><tr><th colspan="1">columns image-with-content right</th></tr><tr><td>Guiding Principles At RJRVC, we operate our business in a responsible</td></tr></table>
+<dl class="kv">
+<dt>Authored on</dt><dd>3 block instances across 2 pages: <code class="code-inline">/</code>, <code class="code-inline">/transforming-tobacco</code></dd>
+<dt>Implementation</dt><dd><a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/columns/columns.js" target="_blank" rel="noopener">blocks/columns/columns.js</a> (1.2 KB) · <a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/columns/columns.css" target="_blank" rel="noopener">columns.css</a> (2.9 KB)</dd>
+<dt>CSS variants</dt><dd><code class="code-inline">image-with-content</code></dd>
+</dl>
+</div><div class="block-card">
+<h3><code>hero subpage wide</code> <span class="skill-tag tag-js">Custom / modified</span></h3>
+<p>Is this paragraph a lone link (an authored call to action)?</p>
+<table class="da-table"><tr><th colspan="1">hero subpage wide</th></tr><tr><td class="empty">(image / empty)</td></tr><tr><td>Privacy Policy and Your State Privacy Rights</td></tr></table>
+<dl class="kv">
+<dt>Authored on</dt><dd>3 block instances across 3 pages: <code class="code-inline">/privacy-policy</code>, <code class="code-inline">/terms-and-conditions</code>, <code class="code-inline">/transforming-tobacco</code></dd>
+<dt>Implementation</dt><dd><a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/hero/hero.js" target="_blank" rel="noopener">blocks/hero/hero.js</a> (2.6 KB) · <a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/hero/hero.css" target="_blank" rel="noopener">hero.css</a> (4.1 KB)</dd>
+<dt>CSS variants</dt><dd><code class="code-inline">hero-has-media</code>, <code class="code-inline">subpage</code></dd>
+</dl>
+</div><div class="block-card">
+<h3><code>columns</code> <span class="skill-tag tag-js">Custom / modified</span></h3>
+
+<table class="da-table"><tr><th colspan="2">columns</th></tr><tr><td>Adult Tobacco Consumers If you are an adult who has a question about o</td><td>Job Applicants Information regarding the availability of specific empl</td></tr></table>
+<dl class="kv">
+<dt>Authored on</dt><dd>1 block instance across 1 page: <code class="code-inline">/contact-us</code></dd>
+<dt>Implementation</dt><dd><a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/columns/columns.js" target="_blank" rel="noopener">blocks/columns/columns.js</a> (1.2 KB) · <a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/columns/columns.css" target="_blank" rel="noopener">columns.css</a> (2.9 KB)</dd>
+<dt>CSS variants</dt><dd><code class="code-inline">image-with-content</code></dd>
+</dl>
+</div><div class="block-card">
+<h3><code>hero</code> <span class="skill-tag tag-js">Custom / modified</span></h3>
+<p>Is this paragraph a lone link (an authored call to action)?</p>
+<table class="da-table"><tr><th colspan="1">hero</th></tr><tr><td class="empty">(image / empty)</td></tr><tr><td>THE TOBACCO INDUSTRY LEADER We are more than a vapor company, we are a</td></tr></table>
+<dl class="kv">
+<dt>Authored on</dt><dd>1 block instance across 1 page: <code class="code-inline">/</code></dd>
+<dt>Implementation</dt><dd><a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/hero/hero.js" target="_blank" rel="noopener">blocks/hero/hero.js</a> (2.6 KB) · <a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/hero/hero.css" target="_blank" rel="noopener">hero.css</a> (4.1 KB)</dd>
+<dt>CSS variants</dt><dd><code class="code-inline">hero-has-media</code>, <code class="code-inline">subpage</code></dd>
+</dl>
+</div><div class="block-card">
+<h3><code>table-bordered no-header</code> <span class="skill-tag tag-js">Custom / modified</span></h3>
+<p>Table (bordered): each block row is a table row, each cell a table cell. The first row is the header row unless the `no-header` option is set. Based on https://www.aem.live/developer/block-collection/table</p>
+<table class="da-table"><tr><th colspan="2">table-bordered no-header</th></tr><tr><td>Right to Know or Access</td><td>As an eligible resident, you have the right to request that we disclos</td></tr><tr><td>Right to Data Portability</td><td>As an eligible resident, you have the right obtain the personal inform</td></tr><tr><td>Right to Correct</td><td>As an eligible resident, you have the right to request that we correct</td></tr><tr><td>Right to Request Deletion</td><td>As an eligible resident, you have the right to request the deletion of</td></tr><tr><td>Right to Non-Discrimination</td><td>As an eligible resident, you have the right not to receive discriminat</td></tr><tr><td>How to Exercise Your State Privacy Rights; Authorized Agents</td><td>If you are an eligible resident and would like to submit a verifiable</td></tr><tr><td colspan="2" class="empty">… 1 more rows</td></tr></table>
+<dl class="kv">
+<dt>Authored on</dt><dd>1 block instance across 1 page: <code class="code-inline">/privacy-policy</code></dd>
+<dt>Implementation</dt><dd><a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/table-bordered/table-bordered.js" target="_blank" rel="noopener">blocks/table-bordered/table-bordered.js</a> (1.7 KB) · <a href="https://github.com/AdobeDrago/rjrvapor/blob/main/blocks/table-bordered/table-bordered.css" target="_blank" rel="noopener">table-bordered.css</a> (787 B)</dd>
+<dt>CSS variants</dt><dd><span class="muted">none declared</span></dd>
+</dl>
+</div><h3>Blocks in the repo that no authored page uses yet</h3><div class="table-scroll"><table class="spec-table"><thead><tr><th>Block</th><th>JS</th><th>CSS</th><th>Status</th></tr></thead><tbody><tr><td><a href="https://github.com/AdobeDrago/rjrvapor/tree/main/blocks/cards" target="_blank" rel="noopener">cards</a></td><td>745 B</td><td>431 B</td><td>Boilerplate, unchanged</td></tr><tr><td><a href="https://github.com/AdobeDrago/rjrvapor/tree/main/blocks/footer" target="_blank" rel="noopener">footer</a></td><td>1.2 KB</td><td>939 B</td><td>Header/footer/fragment: loaded by the page shell</td></tr><tr><td><a href="https://github.com/AdobeDrago/rjrvapor/tree/main/blocks/fragment" target="_blank" rel="noopener">fragment</a></td><td>1.9 KB</td><td>40 B</td><td>Header/footer/fragment: loaded by the page shell</td></tr><tr><td><a href="https://github.com/AdobeDrago/rjrvapor/tree/main/blocks/header" target="_blank" rel="noopener">header</a></td><td>3.2 KB</td><td>1.6 KB</td><td>Header/footer/fragment: loaded by the page shell</td></tr><tr><td><a href="https://github.com/AdobeDrago/rjrvapor/tree/main/blocks/widget" target="_blank" rel="noopener">widget</a></td><td>2.9 KB</td><td>30 B</td><td>Boilerplate, unchanged</td></tr></tbody></table></div>
+</section><section class="doc-section" id="brand">
+<h2><span class="section-icon icon-green"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M3 2.5A.5.5 0 013.5 2h9a.5.5 0 01.5.5V4a.5.5 0 01-1 0v-1H8.5v10H10a.5.5 0 010 1H6a.5.5 0 010-1h1.5V3h-3v1a.5.5 0 01-1 0z"/></svg></span>Brand design system</h2>
+<div class="section-rule"></div>
+<p>Tokens are read from <a href="https://github.com/AdobeDrago/rjrvapor/blob/main/styles/styles.css" target="_blank" rel="noopener">styles/styles.css</a> and styles/brand.css (the <code class="code-inline">:root</code> block).</p><h3>Colour tokens</h3><div class="swatch-row"><div class="swatch"><div class="swatch-chip bordered" style="background:#fff"></div><div class="swatch-meta"><strong>background-color</strong><code>#fff</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:#ececec"></div><div class="swatch-meta"><strong>light-color</strong><code>#ececec</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:#2f4c77"></div><div class="swatch-meta"><strong>dark-color</strong><code>#2f4c77</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:#1d427a"></div><div class="swatch-meta"><strong>text-color</strong><code>#1d427a</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:#2f4c77"></div><div class="swatch-meta"><strong>link-color</strong><code>#2f4c77</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:#2f4c77"></div><div class="swatch-meta"><strong>link-hover-color</strong><code>#2f4c77</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:rgb(29 66 122)"></div><div class="swatch-meta"><strong>heading-color</strong><code>rgb(29 66 122)</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:rgb(47 76 119)"></div><div class="swatch-meta"><strong>copy-color</strong><code>rgb(47 76 119)</code></div></div><div class="swatch"><div class="swatch-chip bordered" style="background:rgb(194 164 107)"></div><div class="swatch-meta"><strong>accent-color</strong><code>rgb(194 164 107)</code></div></div></div><h3>Font families</h3><div class="type-sample"><b>--body-font-family</b><br>franklin-gothic-urw, sans-serif</div><div class="type-sample"><b>--heading-font-family</b><br>franklin-gothic-urw, sans-serif</div><div class="type-sample"><b>--comp-font-family</b><br>franklin-gothic-urw-comp, sans-serif</div><h3>Type scale</h3><div class="table-scroll"><table class="spec-table"><thead><tr><th>Token</th><th>Value</th></tr></thead><tbody><tr><td><code class="code-inline">--base-font-size</code></td><td>calc(15.5587px + 0.6261vw)</td></tr><tr><td><code class="code-inline">--copy-font-size</code></td><td>calc(16.7287px + 0.3261vw)</td></tr><tr><td><code class="code-inline">--h1-font-size</code></td><td>calc(17.4176px + 3.7391vw)</td></tr><tr><td><code class="code-inline">--h2-font-size</code></td><td>calc(23.2685px + 0.9566vw)</td></tr><tr><td><code class="code-inline">--eyebrow-font-size</code></td><td>calc(15.6261px + 0.6087vw)</td></tr><tr><td><code class="code-inline">--body-font-size-m</code></td><td>18px</td></tr><tr><td><code class="code-inline">--body-font-size-s</code></td><td>18px</td></tr><tr><td><code class="code-inline">--body-font-size-xs</code></td><td>17px</td></tr><tr><td><code class="code-inline">--heading-font-size-xxl</code></td><td>32px</td></tr><tr><td><code class="code-inline">--heading-font-size-xl</code></td><td>27px</td></tr><tr><td><code class="code-inline">--heading-font-size-l</code></td><td>27px</td></tr><tr><td><code class="code-inline">--heading-font-size-m</code></td><td>27px</td></tr><tr><td><code class="code-inline">--heading-font-size-s</code></td><td>24px</td></tr><tr><td><code class="code-inline">--heading-font-size-xs</code></td><td>22px</td></tr></tbody></table></div><h3>Layout tokens</h3><div class="table-scroll"><table class="spec-table"><thead><tr><th>Token</th><th>Value</th></tr></thead><tbody><tr><td><code class="code-inline">--nav-height</code></td><td>51px</td></tr></tbody></table></div><h3>Brand assets committed to GitHub</h3><div class="table-scroll"><table class="spec-table"><thead><tr><th>Where</th><th>Files</th></tr></thead><tbody><tr><td>Icons in /icons</td><td>down-arrow.png, logo.png, search.svg</td></tr></tbody></table></div>
+</section><section class="doc-section" id="github">
+<h2><span class="section-icon icon-ink"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M9.5 3.25a2.25 2.25 0 11-3 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 1111 3.25z"/></svg></span>GitHub implementation</h2>
+<div class="section-rule"></div>
+<h3>Repository</h3><dl class="kv"><dt>Repo</dt><dd><a href="https://github.com/AdobeDrago/rjrvapor" target="_blank" rel="noopener">AdobeDrago/rjrvapor</a></dd><dt>Branches</dt><dd><code class="code-inline">main</code>, <code class="code-inline">rjrvapor-home-parity</code>, <code class="code-inline">rjrvapor-subpages</code></dd><dt>Base commit</dt><dd><code class="code-inline">274dbbf</code> "chore: cleanup repository template"; everything after it is site work.</dd></dl><h3>Pull requests</h3><div class="table-scroll"><table class="spec-table"><thead><tr><th>#</th><th>Title</th><th>Branch</th><th>State</th></tr></thead><tbody><tr><td><a href="https://github.com/AdobeDrago/rjrvapor/pull/1" target="_blank" rel="noopener">#1</a></td><td>Rebuild the rjrvapor.com home page as native EDS blocks</td><td><code class="code-inline">rjrvapor-home-parity</code></td><td><span class="pill done">merged</span></td></tr><tr><td><a href="https://github.com/AdobeDrago/rjrvapor/pull/2" target="_blank" rel="noopener">#2</a></td><td>Migrate rjrvapor.com subpages (11 pages): hero subpage/photo layout, table block, page styles</td><td><code class="code-inline">rjrvapor-subpages</code></td><td><span class="pill done">merged</span></td></tr></tbody></table></div><h3>Commit history (main)</h3><ul class="timeline"><li><span class="when">2026-11-12</span><a href="https://github.com/AdobeDrago/rjrvapor/commit/c0da2f0" target="_blank" rel="noopener">c0da2f0</a> Merge pull request #2 from AdobeDrago/rjrvapor-subpages</li><li><span class="when">2026-11-13</span><a href="https://github.com/AdobeDrago/rjrvapor/commit/72672ee" target="_blank" rel="noopener">72672ee</a> Skip content-section spacing on empty sections (metadata-only section at page end)</li><li><span class="when">2026-11-13</span><a href="https://github.com/AdobeDrago/rjrvapor/commit/c1f56ab" target="_blank" rel="noopener">c1f56ab</a> Migrate rjrvapor.com subpages: hero subpage/photo layout, table block, page styles</li><li><span class="when">2026-11-12</span><a href="https://github.com/AdobeDrago/rjrvapor/commit/6dfe3b7" target="_blank" rel="noopener">6dfe3b7</a> Merge pull request #1 from AdobeDrago/rjrvapor-home-parity</li><li><span class="when">2026-11-12</span><a href="https://github.com/AdobeDrago/rjrvapor/commit/1971005" target="_blank" rel="noopener">1971005</a> Publish home to DA: images as DA media, branch-preview gate results</li><li><span class="when">2026-11-12</span><a href="https://github.com/AdobeDrago/rjrvapor/commit/af6e138" target="_blank" rel="noopener">af6e138</a> Rebuild rjrvapor.com home page as native EDS blocks</li><li><span class="when">2026-11-12</span><a href="https://github.com/AdobeDrago/rjrvapor/commit/2e0c1f9" target="_blank" rel="noopener">2e0c1f9</a> Apply brand setup from source site</li><li><span class="when">2026-11-12</span><a href="https://github.com/AdobeDrago/rjrvapor/commit/274dbbf" target="_blank" rel="noopener">274dbbf</a> chore: cleanup repository template</li><li><span class="when">2026-11-12</span><a href="https://github.com/AdobeDrago/rjrvapor/commit/350406d" target="_blank" rel="noopener">350406d</a> Initial commit</li></ul><h3>What differs from the boilerplate</h3><p>43 files outside <code class="code-inline">import-work/</code> were added or changed after the base commit.</p><div class="table-scroll"><table class="spec-table"><thead><tr><th>Area</th><th>Files</th><th>Changed files</th></tr></thead><tbody><tr><td><code class="code-inline">(root)</code></td><td>5</td><td>.gitignore, .hlxignore, favicon.ico, favicon.png, head.html</td></tr><tr><td><code class="code-inline">blocks</code></td><td>16</td><td>README.md, columns.css, columns.js, metadata.json, footer.css, footer.js, header.css, header.js …</td></tr><tr><td><code class="code-inline">fonts</code></td><td>4</td><td>roboto-bold.woff2, roboto-condensed-bold.woff2, roboto-medium.woff2, roboto-regular.woff2</td></tr><tr><td><code class="code-inline">icons</code></td><td>2</td><td>down-arrow.png, logo.png</td></tr><tr><td><code class="code-inline">styles</code></td><td>3</td><td>brand.css, fonts.css, styles.css</td></tr><tr><td><code class="code-inline">tools</code></td><td>13</td><td>import-advocacy.js, import-contact-us.js, import-news-article.js, page-templates.json, columns-two-column.js, columns.js, hero.js, table-bordered.js …</td></tr></tbody></table></div><p><strong>scripts/scripts.js</strong> is unchanged from the boilerplate.</p><h3>import-work/ (migration tooling committed to the repo)</h3><p>22 files: page section sources under <code class="code-inline">pages/</code>, the DA-ready documents under <code class="code-inline">da/</code>, gate configs under <code class="code-inline">gate/</code>, <code class="code-inline">pages.json</code>, <code class="code-inline">site.json</code> and <code class="code-inline">ledger.md</code>. Open it in <a href="https://github.com/AdobeDrago/rjrvapor/tree/main/import-work" target="_blank" rel="noopener">GitHub</a>.</p><h3>Source URL map (import-work/pages.json)</h3><div class="table-scroll"><table class="spec-table"><thead><tr><th>Page key</th><th>Source URL</th></tr></thead><tbody><tr><td><code class="code-inline">home</code></td><td><a href="https://www.rjrvapor.com/" target="_blank" rel="noopener">https://www.rjrvapor.com/</a></td></tr></tbody></table></div>
+</section><section class="doc-section" id="fidelity">
+<h2><span class="section-icon icon-green"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/></svg></span>Parity gate &amp; results</h2>
+<div class="section-rule"></div>
+<div class="table-scroll"><table class="spec-table"><thead><tr><th>Check</th><th>Result</th></tr></thead><tbody><tr><td>Local gate (home, 1440 + 1280)</td><td>0/14 at the bar because of the font residual; 0 style mismatches on hero, disclaimer and who at both widths</td></tr><tr><td>Section offsets</td><td>14/14</td></tr><tr><td>Branch preview</td><td>0/14 at the bar; offsets 14/14; +2 mismatches on header and products are image pairing</td></tr><tr><td>Lint</td><td>npm run lint clean</td></tr></tbody></table></div><p class="small muted">The parity gate compares each section of the rebuild with the source at 1440 and 1280 px: pass = ≥99% pixel match and 0 computed-style mismatches. Figures above are quoted from the repo's own ledger and gate files.</p><details class="fold"><summary>Full parity ledger (import-work/ledger.md)</summary><div class="fold-body"><p>Baseline at start: no <code class="code-inline">get_usage</code> reading was taken at session start. At the end of the local build this session&#x27;s context was 202k tokens. The extra-usage meter ($320.64 of $600 at that point) is account-wide and shared with parallel sessions, so this session&#x27;s spend can&#x27;t be separated out. Gate: ≥99% pixel and 0 computed-style mismatches per section at 1440 + 1280 (default bar, not lowered).</p>
+<p><strong>Font residual (accepted by the user before building):</strong> the source sets type in <code class="code-inline">franklin-gothic-urw</code> / <code class="code-inline">franklin-gothic-urw-comp</code> from Adobe Fonts (Typekit), and the EDS site has no licensed kit. The rebuild keeps the exact computed <code class="code-inline">font-family</code> strings and aliases those family names to local Arial / Arial Narrow faces (<code class="code-inline">styles/styles.css</code>). Their <code class="code-inline">size-adjust</code> comes from glyph widths measured on the source crops, and the ascent/descent overrides from measured baselines. The text still renders as Arial, so every section with text stays below 99% pixel, and the remaining style mismatches are glyph widths (x/width of inline text). Remove the alias faces when a kit is added.</p>
+<div class="table-scroll"><table class="spec-table"><thead><tr><th>Phase / iteration</th><th>Block / variant</th><th>Change</th><th>Mismatches before→after</th><th>Pixel before→after (1440 / 1280)</th><th>Context Δ</th><th>Spend Δ</th></tr></thead><tbody>
+<tr><td>Intake</td><td>—</td><td>preflight ok (by the parent session); live capture challenged by Imperva → <code class="code-inline">headed</code> (user passed the check; the first headed window timed out)</td><td>n/a</td><td>n/a</td><td>—</td><td>n/a</td></tr>
+<tr><td>Capture</td><td>—</td><td>1 page × 1440, 1280; header re-captured with <code class="code-inline">header.banner</code> (outer <code class="code-inline">&lt;header&gt;</code> is 0px)</td><td>n/a</td><td>n/a</td><td>—</td><td>n/a</td></tr>
+<tr><td>Map</td><td>—</td><td>5 sections + header + footer; reuse: hero (existing), columns <code class="code-inline">image-with-content</code> (left/right/2-col), disclaimer = section style; plan approved</td><td>n/a</td><td>n/a</td><td>—</td><td>n/a</td></tr>
+<tr><td>T1</td><td>header, footer, hero, columns variant, section styles</td><td>first build from measured values</td><td>152 (sum over 14 checks, first valid run; an earlier run hit the wrong local server)</td><td>hero 93.73/95.55, footer 98.21/98.0, products 68.23/77.75</td><td>≈150k (capture → first gate)</td><td>n/a</td></tr>
+<tr><td>T2</td><td>global</td><td>source border reset (<code class="code-inline">* { border: 0 solid }</code>), comp face size-adjust 73%, body 94.5%, header inherits comp 600</td><td>152 → 99</td><td>hero 96.43/95.05, footer 98.86/98.72</td><td>≈10k</td><td>n/a</td></tr>
+<tr><td>T3</td><td>columns / products</td><td>stale build fixed (image renamed to pair with source); ascent/descent overrides</td><td>99 → 91</td><td>products 97.83/98.61</td><td>≈8k</td><td>n/a</td></tr>
+<tr><td>T4</td><td>global</td><td>overrides divided by size-adjust (they scale with it); body weight 600 with copy 400 (measured on img/text records)</td><td>91 → 41</td><td>principles 98.11/97.75</td><td>≈8k</td><td>n/a</td></tr>
+<tr><td>T5</td><td>global</td><td>separate alias face for weight 500 (95.7%, fixes 1280 H1 wrap 2→3 lines), 600 92%, comp 73.9/73.5%</td><td>41 → 36</td><td>hero 96.93/97.07</td><td>≈6k</td><td>n/a</td></tr>
+<tr><td>T6</td><td>lint</td><td>stylelint precision/order fixes; full re-gate unchanged</td><td>36 → 36</td><td>unchanged</td><td>≈4k</td><td>n/a</td></tr>
+<tr><td>Stop</td><td>—</td><td>remaining mismatches are all glyph x/width; no further gain without the licensed font (stop rule)</td><td>—</td><td>—</td><td>—</td><td>n/a</td></tr>
+</tbody></table></div>
+<h3>Final local gate (localhost:3010, bundle captured 2026-11-12, headed)</h3>
+<div class="table-scroll"><table class="spec-table"><thead><tr><th>Section</th><th>1440 px / mism</th><th>1280 px / mism</th></tr></thead><tbody>
+<tr><td>header</td><td>98.50% / 4</td><td>98.90% / 4</td></tr>
+<tr><td>hero</td><td>96.93% / 0</td><td>97.07% / 0</td></tr>
+<tr><td>disclaimer</td><td>97.68% / 0</td><td>97.14% / 0</td></tr>
+<tr><td>who</td><td>98.55% / 0</td><td>98.56% / 0</td></tr>
+<tr><td>principles</td><td>98.13% / 1</td><td>97.79% / 3</td></tr>
+<tr><td>products</td><td>97.64% / 1</td><td>98.51% / 3</td></tr>
+<tr><td>footer</td><td>98.94% / 10</td><td>98.81% / 10</td></tr>
+</tbody></table></div>
+<p>0/14 at the bar (font residual). Style mismatches are 0 on hero, disclaimer and who at both widths; everything left is inline text width/x from glyph metrics. <code class="code-inline">offsets.js</code>: 14/14 at the source&#x27;s page position. <code class="code-inline">npm run lint</code>: clean. Nav dropdowns (About, Products) open on hover/click and close on leave/Escape: built, checked headless, not gated.</p>
+<h3>Branch preview gate (https://rjrvapor-home-parity--rjrvapor--adobedrago.aem.page/, DA content)</h3>
+<div class="table-scroll"><table class="spec-table"><thead><tr><th>Section</th><th>1440 px / mism</th><th>1280 px / mism</th></tr></thead><tbody>
+<tr><td>header</td><td>98.43% / 6</td><td>98.89% / 6</td></tr>
+<tr><td>hero</td><td>96.92% / 0</td><td>97.07% / 0</td></tr>
+<tr><td>disclaimer</td><td>97.68% / 0</td><td>97.14% / 0</td></tr>
+<tr><td>who</td><td>98.55% / 0</td><td>98.56% / 0</td></tr>
+<tr><td>principles</td><td>98.13% / 1</td><td>97.79% / 3</td></tr>
+<tr><td>products</td><td>97.44% / 3</td><td>98.11% / 5</td></tr>
+<tr><td>footer</td><td>98.94% / 10</td><td>98.81% / 10</td></tr>
+</tbody></table></div>
+<p>0/14 at the bar; offsets 14/14. The +2 mismatches on header and products are image pairing: EDS serves the DA images as <code class="code-inline">media_&lt;hash&gt;.png</code>, so the gate reports <code class="code-inline">logo.png</code> and <code class="code-inline">Vuse_Family_Lineup_v2.png</code> as unpaired on each side (reported, not hidden). Products at 1280 is 516px tall against 515px on the source; the served image rendition differs slightly. <code class="code-inline">publish.js</code> reported &quot;0 served&quot; blocks for home because it checks <code class="code-inline">/.plain.html</code>; <code class="code-inline">/index.plain.html</code> serves hero + 3 × columns image-with-content in authored order.</p></div></details>
+</section><section class="doc-section" id="decisions">
+<h2><span class="section-icon icon-purple"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.75A.75.75 0 012.75 2h7.5l3.5 3.5v7.75a.75.75 0 01-.75.75h-10.5a.75.75 0 01-.75-.75zM3.5 3.5v9h9V6H9.5V3.5z"/></svg></span>Decisions &amp; assumptions</h2>
+<div class="section-rule"></div>
+<div class="table-scroll"><table class="spec-table"><thead><tr><th>Decision</th><th>Detail</th></tr></thead><tbody><tr><td>Font residual accepted before building</td><td>franklin-gothic-urw / -comp are Adobe Fonts (Typekit) with no kit configured. The exact computed font-family strings are kept and aliased to local Arial/Arial Narrow with measured size-adjust and ascent/descent overrides.</td></tr><tr><td>Stop rule</td><td>Remaining mismatches are all glyph x/width from font metrics; no further gain without the licensed font.</td></tr><tr><td>Capture</td><td>Live capture was challenged by Imperva; the user passed the check in a headed window.</td></tr></tbody></table></div>
+</section><section class="doc-section" id="limitations">
+<h2><span class="section-icon icon-orange"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575z"/></svg></span>Known limitations</h2>
+<div class="section-rule"></div>
+<div class="table-scroll"><table class="spec-table"><thead><tr><th>Item</th><th>Detail</th></tr></thead><tbody><tr><td>Fonts render as Arial</td><td>Every text section stays below 99% pixel until a licensed Typekit kit is added. Remove the alias @font-face rules in styles/styles.css when a kit is configured.</td></tr><tr><td>Products section height</td><td>516px at 1280 against 515px on the source; the served image rendition differs slightly.</td></tr><tr><td>Only home was gated</td><td>The 11 inner pages were authored in DA and merged in PR #2; the committed ledger and gate configs cover the home page.</td></tr></tbody></table></div>
+</section><section class="doc-section" id="next-steps">
+<h2><span class="section-icon icon-blue"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8.22 2.97a.75.75 0 011.06 0l4.25 4.25a.75.75 0 010 1.06l-4.25 4.25a.75.75 0 01-1.06-1.06l2.97-2.97H3.75a.75.75 0 010-1.5h7.44L8.22 4.03a.75.75 0 010-1.06z"/></svg></span>Next steps</h2>
+<div class="section-rule"></div>
+<ul class="checklist"><li class="check-item"><span class="check-mark cm-todo"></span><div class="check-body"><div class="check-title">Configure an Adobe Fonts kit for franklin-gothic-urw and remove the alias faces.</div></div></li><li class="check-item"><span class="check-mark cm-todo"></span><div class="check-body"><div class="check-title">Extend the gate to the inner pages.</div></div></li><li class="check-item"><span class="check-mark cm-todo"></span><div class="check-body"><div class="check-title">Run QA on the branch preview and the main preview against the production site, section by section.</div></div></li><li class="check-item"><span class="check-mark cm-todo"></span><div class="check-body"><div class="check-title">Publish the pages to .aem.live once QA is signed off (merging main ships code only; content is previewed and published separately).</div></div></li></ul>
+</section><section class="doc-section" id="dev-notes">
+<h2><span class="section-icon icon-ink"><svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M4.5 2A2.5 2.5 0 002 4.5v7A2.5 2.5 0 004.5 14h7a2.5 2.5 0 002.5-2.5v-7A2.5 2.5 0 0011.5 2zM3.5 4.5a1 1 0 011-1h7a1 1 0 011 1v7a1 1 0 01-1 1h-7a1 1 0 01-1-1z"/></svg></span>Developer notes</h2>
+<div class="section-rule"></div>
+<h3>Run locally</h3>
+<div class="code-block"><span class="cmt"># clone and install</span>
+git clone https://github.com/AdobeDrago/rjrvapor.git &amp;&amp; cd rjrvapor
+npm i
+<span class="cmt"># local code, previewed DA content</span>
+npx -y @adobe/aem-cli up
+<span class="cmt"># lint before every PR</span>
+npm run lint</div>
+<h3>Where things live</h3>
+<div class="table-scroll"><table class="spec-table"><thead><tr><th>Path</th><th>Purpose</th></tr></thead><tbody><tr><td>blocks/&lt;name&gt;/</td><td>Block JS + CSS (one folder per block)</td></tr><tr><td>scripts/scripts.js</td><td>Page decoration, auto-blocking, section styles</td></tr><tr><td>scripts/aem.js</td><td>Vendored AEM library — never edit</td></tr><tr><td>styles/styles.css</td><td>Global tokens and base styles (:root)</td></tr><tr><td>styles/fonts.css</td><td>Webfont @font-face rules</td></tr><tr><td>head.html</td><td>Head markup, CSP and script/style includes</td></tr><tr><td>import-work/</td><td>Migration sources, DA documents, gate configs and ledger</td></tr></tbody></table></div>
+<h3>Rules from the repo's AGENTS.md</h3>
+<ul class="hl-list"><li>Markup comes from the backend: fetch <code class="code-inline">/path.plain.html</code> before writing a block.</li><li><code class="code-inline">buildAutoBlocks</code> rewrites content before a block runs; authors omit and add cells, so decorate defensively.</li><li>Scope CSS to <code class="code-inline">.blockname</code>; <code class="code-inline">-wrapper</code> and <code class="code-inline">-container</code> are section classes.</li><li>A PR without a <code class="code-inline">{branch}--rjrvapor--AdobeDrago.aem.page/{path}</code> link is rejected.</li><li>Merging main ships code; content is previewed and published separately in DA.</li><li>All committed files are served — use <code class="code-inline">.hlxignore</code> for anything that should not be.</li></ul>
+<h3>Authoring workflow in DA.live</h3>
+<ol class="req-list"><li>Open <a href="https://da.live/#/adobedrago/rjrvapor" target="_blank" rel="noopener">da.live/#/adobedrago/rjrvapor</a> and edit the document.</li><li>Preview from DA (or use the Sidekick) and check <code class="code-inline">https://main--rjrvapor--adobedrago.aem.page/</code>.</li><li>For a code change, branch from main, push, and open the PR with the <code class="code-inline">&lt;branch&gt;--rjrvapor--adobedrago.aem.page</code> link.</li><li>Publish content to .aem.live after QA.</li></ol>
+</section>
+<footer class="doc-footer">
+  <span>Updated November 2026</span><span>·</span>
+  <span>Generated from the GitHub repos and DA.live content of the AdobeDrago organisation by <code class="code-inline">tools/collect.py</code> and <code class="code-inline">tools/build.py</code>.</span>
+</footer>
+</div></main>
+</div>
+<script>
+// Site switcher + scroll-spy for the sidebar. No dependencies.
+(function () {
+  var sel = document.getElementById('site-switch');
+  if (sel) sel.addEventListener('change', function () { if (sel.value) window.location.href = sel.value; });
+  var links = [].slice.call(document.querySelectorAll('.sidebar-link[href^="#"]'));
+  var map = {};
+  links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+  var sections = Object.keys(map).map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  if (!('IntersectionObserver' in window) || !sections.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        links.forEach(function (l) { l.classList.remove('active'); });
+        if (map[e.target.id]) map[e.target.id].classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(function (s) { io.observe(s); });
+})();
+
+</script>
+</body>
+</html>
